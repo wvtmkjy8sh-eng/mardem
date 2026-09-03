@@ -1,0 +1,1158 @@
+:root{--bg:#f5f7fa;--card:#fff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--accent:#b7f500;--accent-2:#8fda00;--green:#16a34a;--blue:#65b8ff;--purple:#a58cff;--danger:#ff5353;--dark:#111827;--shadow:0 14px 40px rgba(17,24,39,.08);--radius:20px;--display:"Arial",sans-serif;--body:"Arial",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:400 14px/1.5 var(--body);padding-bottom:90px}.container{width:min(calc(100% - 28px),820px);margin:auto}.app-header{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}.header-top{min-height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font:800 27px/1 var(--display);letter-spacing:-1.5px}.logo span{color:var(--accent)}.logo small{font:800 10px var(--body);color:var(--muted);margin-left:5px}.header-subtitle{color:var(--muted);font-size:10px;margin-top:5px}.icon-btn{width:40px;height:40px;border:1px solid var(--border);border-radius:13px;background:var(--card);color:var(--text);font-size:18px;cursor:pointer}.icon-btn.small{width:32px;height:32px;border-radius:9px}.app-main{padding:26px 0}.page{display:none}.page.active{display:block}.welcome{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:18px}.welcome h1,.page-intro h1{font:800 30px/1.1 var(--display);letter-spacing:-1px;margin:5px 0}.welcome p,.page-intro p{color:var(--muted);margin:7px 0}.eyebrow{font-size:9px;letter-spacing:.13em;font-weight:800;color:var(--muted);text-transform:uppercase}.today-badge{font-size:9px;font-weight:800;color:var(--accent);border:1px solid rgba(183,245,0,.25);background:rgba(183,245,0,.08);padding:8px 10px;border-radius:999px}.hero-card{position:relative;overflow:hidden;background:var(--dark);color:#fff;border-radius:24px;padding:24px;box-shadow:var(--shadow);margin-bottom:26px}
+.hero-card .hero-today-badge{position:absolute;top:16px;right:16px;z-index:4;margin:0;}
+.hero-card:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-90px;top:-90px;background:rgba(183,245,0,.22)}.hero-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:rgba(255,255,255,.1);font-size:26px;margin-bottom:16px}.hero-copy{position:relative;z-index:1}.hero-copy .eyebrow{color:#c7cad1}.hero-copy h2{font:800 25px/1.15 var(--display);margin:5px 0}.hero-copy p{color:#c7cad1;margin:0;max-width:620px}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.hero-stats div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:11px}.hero-stats strong{display:block;font-size:15px}.hero-stats span{color:#aeb3be;font-size:9px}.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:800;font-size:12px;cursor:pointer;transition:.18s;min-height:44px}.btn:hover{transform:translateY(-1px);filter:brightness(1.04)}.btn:active{transform:scale(.98)}.btn:focus-visible,.icon-btn:focus-visible,.text-btn:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(101,184,255,.20);outline-offset:2px}.btn-primary{background:var(--accent);color:#fff}.btn-light{background:var(--card);color:var(--text);border:1px solid var(--border)}.btn-danger{background:var(--danger);color:#fff}.full{width:100%}.progress-danger{margin-top:18px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:24px 0 11px}.section-head h2{font:800 18px var(--display);margin:2px 0}.text-btn{border:0;background:none;color:var(--accent);font-weight:800;font-size:11px;padding:4px;cursor:pointer}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 5px 18px rgba(17,24,39,.025);margin-bottom:10px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.mini-card,.metric-card{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:14px;text-align:center}.mini-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;margin:0 auto 7px}.mini-icon.orange{background:rgba(183,245,0,.10)}.mini-icon.blue{background:rgba(101,184,255,.10)}.mini-icon.green{background:rgba(22,163,74,.1)}.mini-icon.purple{background:rgba(165,140,255,.10)}.mini-card strong{display:block;font:800 21px var(--display)}.mini-card small,.metric-card small{display:block;color:var(--muted);font-size:10px}.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{border:1px solid var(--border);border-radius:14px;padding:10px 3px;text-align:center;background:var(--bg);font-size:9px;min-width:0}.day.today{background:var(--accent);border-color:var(--accent);color:#fff}.day.done:not(.today){border-color:rgba(143,218,0,.30);background:rgba(143,218,0,.06)}.day .icon{display:block;font-size:16px;margin:5px}.day strong{font-size:8px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.week-current{margin-top:12px;padding-top:11px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}.goal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0}.goal-row strong,.goal-row small{display:block}.goal-row small{font-size:10px;color:var(--muted);margin-top:2px}.goal-row b{font-size:11px;color:var(--accent)}.progress{height:8px;border-radius:20px;background:#252b20;overflow:hidden;margin-bottom:17px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .4s}.insight-card{display:flex;gap:14px;align-items:flex-start}.insight-card>span{font-size:26px}.insight-card strong{font-size:13px}.insight-card p{color:var(--muted);font-size:11px;margin:3px 0}.page-intro{margin-bottom:20px}.page-intro h1{margin-top:4px}.filter-row{display:flex;gap:7px;overflow:auto}.chip{border:1px solid var(--border);background:var(--bg);color:var(--muted);padding:9px 12px;border-radius:999px;font-size:10px;font-weight:800;white-space:nowrap;cursor:pointer}.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}.workout-item{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center}.workout-item .icon{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:rgba(183,245,0,.09);font-size:24px}.workout-item h3{margin:0;font-size:14px}.workout-item p{color:var(--muted);font-size:10px;margin:3px 0}.recovery-head{display:flex;justify-content:space-between;gap:12px}.recovery-head strong{font-size:14px}.recovery-head span{font-size:10px;color:var(--green);font-weight:800}.recovery-card p{font-size:11px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.form-grid.compact{margin-bottom:4px}label{font-size:11px;font-weight:800;color:var(--muted)}input,select,textarea{display:block;width:100%;margin-top:5px;padding:12px 13px;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text);outline:none;font:inherit}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(183,245,0,.10)}.wide{grid-column:1/-1}.advanced{border-top:1px solid var(--border);margin:10px 0 15px;padding-top:11px}.advanced summary{cursor:pointer;font-weight:800;color:var(--text);font-size:11px}.advanced[open] summary{margin-bottom:14px}.button-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.map-placeholder{height:260px;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(135deg,rgba(183,245,0,.06),rgba(101,184,255,.05));color:var(--accent)}.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(127,127,127,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(127,127,127,.1) 1px,transparent 1px);background-size:36px 36px}.map-placeholder svg{position:absolute;inset:0;width:100%;height:100%}.map-placeholder circle{fill:var(--accent)}.map-caption{position:absolute;left:12px;right:12px;bottom:10px;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);padding:8px 10px;border-radius:10px;font-size:10px;color:var(--muted)}.route-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.route-stats span{padding:10px;text-align:center;background:var(--bg);border-radius:11px;font-size:9px;color:var(--muted)}.route-stats b{display:block;color:var(--text);font-size:15px}.ride-item{padding:15px;border:1px solid var(--border);border-radius:16px;background:var(--card);margin-bottom:9px}.ride-top{display:flex;justify-content:space-between;gap:10px}.ride-top strong{font-size:12px}.ride-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.ride-meta span{background:var(--bg);border-radius:10px;padding:8px;text-align:center;font-size:9px;color:var(--muted)}.ride-meta b{display:block;font:800 12px var(--display);color:var(--text)}.ride-note{font-size:10px;color:var(--muted);margin-top:9px}.ride-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:9px}.mini-action{border:0;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:9px;padding:7px 9px;font-size:10px;font-weight:800;cursor:pointer}.progress-hero{display:flex;align-items:center;justify-content:space-between;background:var(--dark);color:#fff;border-radius:22px;padding:20px;margin-bottom:12px}.progress-hero strong{display:block;font:800 36px var(--display);letter-spacing:-1px}.progress-hero>div:first-child>span:last-child{display:block;color:#aeb3be;font-size:10px}.progress-hero .eyebrow{color:#aeb3be}.ring{width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 0deg,rgba(255,255,255,.12) 0deg);position:relative}.ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--dark)}.ring span{position:relative;z-index:1;font-weight:800}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:9px}.metric-card{text-align:left}.metric-card strong{display:block;font:800 22px var(--display);margin-top:3px}.chart-card canvas{width:100%;height:auto;display:block}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.card-head h3{margin:0;font-size:14px}.card-head>span{font-size:10px;color:var(--muted)}.calendar-nav{display:flex;align-items:center;gap:6px}.calendar-nav strong{font-size:10px;text-transform:capitalize}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.cal-head{text-align:center;color:var(--muted);font-size:8px;font-weight:800;padding-bottom:4px}.cal-empty{min-height:44px}.cal-day{min-height:44px;border:1px solid var(--border);border-radius:9px;padding:5px;text-align:center;font-size:9px}.cal-day.today{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.cal-day span{display:block;font-size:10px;min-height:14px}.pr-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)}.pr-row:last-child{border:0}.pr-row>span{font-size:19px}.pr-row div{flex:1}.pr-row small{display:block;color:var(--muted);font-size:9px}.pr-row>b{font-size:10px}.profile-card{display:flex;align-items:center;gap:14px}.avatar{width:66px;height:66px;border-radius:20px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 21px var(--display)}.profile-card h2{margin:0;font-size:17px}.muted{color:var(--muted);font-size:11px}.section-label{font-size:11px;font-weight:800;margin-bottom:13px}.profile-zone{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border)}.profile-zone:last-child{border:0}.profile-zone strong{font-size:11px}.profile-zone small{display:block;color:var(--muted);font-size:9px}.recovery-score{margin-top:13px;border-top:1px solid var(--border);padding-top:14px}.recovery-score strong{font:800 32px var(--display);margin-right:8px}.recovery-score span{font-weight:800}.recovery-score p{color:var(--muted);font-size:10px;margin:4px 0}.maintenance-alert{margin-top:12px;padding:11px;border-radius:12px;background:rgba(183,245,0,.08);font-size:10px;color:var(--muted)}.settings-list{display:grid;gap:8px}.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}.quick-grid button{padding:18px;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:16px;text-align:left;cursor:pointer}.quick-grid button span{display:block;font-size:23px}.quick-grid b,.quick-grid small{display:block;margin-top:6px}.quick-grid small{color:var(--muted);font-size:9px}.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:78px;padding-bottom:env(safe-area-inset-bottom);background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(15px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(5,1fr);z-index:100}.nav-btn{border:0;background:transparent;color:var(--muted);font-size:21px;cursor:pointer}.nav-btn span{display:block;font-size:9px;font-weight:800;margin-top:2px}.nav-btn.active{color:var(--accent)}.fab{position:fixed;right:22px;bottom:92px;width:54px;height:54px;border-radius:18px;border:0;background:var(--accent);color:#fff;font-size:28px;box-shadow:0 12px 30px rgba(183,245,0,.30);z-index:110;cursor:pointer}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:200;align-items:flex-end}.modal.show{display:flex}.modal-content{background:var(--bg);width:100%;max-width:780px;max-height:94vh;overflow:auto;margin:auto auto 0;padding:22px;border-radius:25px 25px 0 0}.small-modal{max-width:520px}.close{float:right;border:0;background:var(--card);color:var(--text);border:1px solid var(--border);width:36px;height:36px;border-radius:50%;font-size:21px;cursor:pointer}.exercise{border:1px solid var(--border);border-radius:16px;padding:14px;margin:10px 0;background:var(--card)}.exercise-top{display:flex;justify-content:space-between;gap:10px}.exercise h3{margin:0;font-size:13px}.exercise small{color:var(--muted);font-size:9px}.sets{display:grid;grid-template-columns:38px 1fr 1fr 38px;gap:6px;margin-top:11px;align-items:center}.sets span{text-align:center;color:var(--muted);font-size:10px}.sets input{padding:9px}.set-check{width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}.set-check.done{background:var(--accent);color:#fff}.timer{margin:16px 0;padding:17px;border-radius:18px;background:var(--dark);color:#fff;text-align:center}.timer strong{font:800 52px var(--display);margin:3px}.timer>div:first-child{display:flex;justify-content:center;align-items:baseline;gap:4px}.timer>div:first-child small{color:#aeb3be}.timer-progress{height:5px;background:#30343b;border-radius:10px;overflow:hidden;margin:0 0 13px}.timer-progress i{display:block;height:100%;background:var(--accent);width:100%;transition:width 1s linear}.timer-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.timer-actions .btn{padding:9px 5px}.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--dark);color:#fff;padding:12px 16px;border-radius:13px;z-index:500;font-size:11px;font-weight:800;box-shadow:var(--shadow);transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}.toast.error{background:var(--danger)}body[data-theme="dark"]{--bg:#0b1005;--card:#151a10;--text:#f4f6ef;--muted:#9da49a;--border:#2b3225;--accent:#b7f500;--accent-2:#8fda00;--green:#8fda00;--blue:#65b8ff;--purple:#a58cff;--danger:#ff5353;--dark:#050703;--shadow:0 18px 50px rgba(0,0,0,.42)}body[data-theme="dark"] .progress{background:#27272a}body[data-theme="dark"] input,body[data-theme="dark"] select,body[data-theme="dark"] textarea{background:#111113}body[data-theme="dark"] .map-grid{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px)}@media(max-width:620px){.container{width:min(calc(100% - 22px),820px)}.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.ride-meta{grid-template-columns:repeat(2,1fr)}.button-row{grid-template-columns:1fr}.hero-card{padding:20px}.hero-copy h2{font-size:22px}.welcome h1{font-size:26px}.day{padding:8px 1px}.progress-hero strong{font-size:30px}.timer-actions{grid-template-columns:repeat(2,1fr)}.fab{right:16px}}
+
+/* Reference visual language: deep graphite/olive surfaces + neon-lime performance accents. */
+.hero-card,.progress-hero,.timer{box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 18px 48px rgba(0,0,0,.24)}
+.btn-primary,.chip.active,.day.today,.avatar,.fab{box-shadow:0 8px 24px rgba(183,245,0,.16)}
+.hero-card:after{background:radial-gradient(circle,rgba(183,245,0,.20),rgba(183,245,0,0) 68%)}
+.card:hover,.mini-card:hover,.metric-card:hover,.quick-grid button:hover{border-color:rgba(183,245,0,.24);transition:border-color .18s ease,transform .18s ease}
+body[data-theme="dark"] .btn-primary,body[data-theme="dark"] .chip.active,body[data-theme="dark"] .day.today,body[data-theme="dark"] .avatar,body[data-theme="dark"] .fab{color:#091000}
+
+
+/* CicloFit 4.3 — melhorias de foco, treinos e mapa real */
+.hero-card{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}.hero-card.today-done{border-color:rgba(143,218,0,.38)}.hero-card.today-done .hero-icon{filter:saturate(1.15);transform:scale(1.04)}
+.workout-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:17px;margin-bottom:10px;border-radius:18px;position:relative;overflow:hidden}.workout-item:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);opacity:.75}.workout-item .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:var(--bg);font-size:25px}.workout-item h3{margin:0 0 5px;font-size:14px}.workout-item p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}.workout-item .btn{min-width:76px}.map-live-badge{font-size:9px;font-weight:900;letter-spacing:.08em;color:var(--green)}.map-card{padding:10px}.real-map{height:420px;border-radius:17px;overflow:hidden;position:relative;background:#dbe5d7}.real-map .leaflet-container{height:100%;width:100%;font:inherit}.map-empty{position:absolute;inset:0;z-index:500;display:grid;place-content:center;text-align:center;gap:7px;background:linear-gradient(135deg,#dfe9dc,#eef2e8);color:#273025;padding:30px}.map-empty strong{font-size:15px}.map-empty span{font-size:10px;color:#647064}.map-location{margin:9px 2px 2px;padding:9px 11px;border-radius:11px;background:var(--bg);color:var(--muted);font-size:10px;font-weight:800}.leaflet-control-attribution{font-size:8px}.leaflet-control-zoom a{color:#20251d!important}.route-stats{margin:9px 2px 0}.ride-item{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.ride-item:hover{transform:translateY(-2px);border-color:rgba(183,245,0,.28);box-shadow:0 12px 30px rgba(0,0,0,.08)}.ride-route-name{display:block;color:var(--muted);font-size:9px;margin-top:3px}.zone-badge{padding:5px 8px;border-radius:999px;background:rgba(183,245,0,.1);color:var(--green);font-size:9px;font-weight:900;height:max-content}.route-pill{display:inline-flex;margin-top:10px;padding:6px 9px;border-radius:999px;background:rgba(101,184,255,.1);color:var(--blue);font-size:9px;font-weight:800}.has-route{border-color:rgba(101,184,255,.18)}
+@media(max-width:620px){.real-map{height:340px}.workout-item{grid-template-columns:auto 1fr}.workout-item .btn{grid-column:1/-1;width:100%}}
+body[data-theme="dark"] .map-empty{background:linear-gradient(135deg,#111a10,#182017);color:#e9eee5}body[data-theme="dark"] .map-empty span{color:#9da49a}
+
+/* GPX persistente e sem controles nativos visíveis */
+input[type="file"]{display:none!important}
+.last-gpx-card{padding:15px}
+.last-gpx-empty{padding:18px;border:1px dashed var(--border);border-radius:14px;text-align:center;color:var(--muted);font-size:10px}
+.last-gpx-title{display:flex;align-items:center;gap:12px}
+.last-gpx-icon{width:44px;height:44px;border-radius:13px;background:rgba(101,184,255,.12);display:grid;place-items:center;font-size:22px}
+.last-gpx-title strong{display:block;font-size:13px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.last-gpx-title small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.last-gpx-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}
+.last-gpx-stats span{padding:10px;border-radius:12px;background:var(--bg);text-align:center}
+.last-gpx-stats b{display:block;font:800 17px var(--display)}
+.last-gpx-stats small{font-size:8px;color:var(--muted);text-transform:uppercase}
+.last-gpx-location{margin-top:9px;padding:9px 11px;border-radius:11px;background:rgba(183,245,0,.07);color:var(--muted);font-size:10px;font-weight:800}
+
+/* CicloFit 4.4 — interface simplificada */
+.gpx-hint{margin-top:9px;padding:9px 11px;border-radius:10px;background:var(--bg);color:var(--muted);font-size:9px;text-align:center}
+.page-intro p{max-width:620px}.hero-copy h2{line-height:1.12}.hero-card.today-done{box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 40px rgba(0,0,0,.20)}
+.workout-item{min-height:78px}.workout-item p{line-height:1.6}.workout-item .btn{padding:10px 14px}
+.last-gpx-card{margin-bottom:4px}.map-card{overflow:hidden}
+@media(max-width:620px){.workout-item{min-height:0}.workout-item .icon{width:44px;height:44px}.gpx-hint{font-size:8px}}
+
+/* CicloFit 4.5 — interface simplificada */
+.workout-list{display:grid;gap:12px}.workout-item{display:grid;grid-template-columns:58px 1fr auto;gap:15px;align-items:center;padding:16px 17px;min-height:118px;position:relative;overflow:hidden;border-radius:20px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.workout-item:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}.workout-item:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(17,24,39,.08);border-color:rgba(183,245,0,.32)}.workout-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:var(--bg);border:1px solid var(--border)}.workout-main{min-width:0}.workout-topline{display:flex;align-items:center;gap:7px;margin-bottom:4px}.workout-tag{font-size:8px;font-weight:900;letter-spacing:.12em;color:var(--muted)}.workout-status{font-size:8px;font-weight:900;color:var(--green);background:rgba(22,163,74,.08);padding:4px 7px;border-radius:999px}.workout-main h3{margin:0;font-size:16px;line-height:1.2}.workout-main p{margin:5px 0 8px;color:var(--muted);font-size:10px;line-height:1.45}.workout-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--muted);font-size:9px;font-weight:800}.workout-open{min-width:94px}.workout-open:disabled,.hero-card #todayAction.is-disabled{opacity:.48;cursor:not-allowed;filter:saturate(.45);box-shadow:none;transform:none!important;pointer-events:none}.ride-form-card #saveRide:disabled,.ride-form-card #saveRide.is-disabled{opacity:.48;cursor:not-allowed;filter:saturate(.45);box-shadow:none;transform:none!important;pointer-events:none}.workout-done:before{background:var(--green)}.workout-done .workout-icon{background:rgba(22,163,74,.07)}.workout-a:before{background:var(--accent)}.workout-b:before{background:var(--blue)}.workout-c:before{background:var(--purple)}.workout-section-label{display:flex;align-items:end;justify-content:space-between;margin:4px 2px 10px}.workout-section-label span{font-size:9px;font-weight:900;letter-spacing:.12em;color:var(--muted)}.workout-section-label small{font-size:9px;color:var(--muted)}
+.cycling-action-grid{display:grid;gap:10px}.ride-form-card{padding:17px}.ride-form-card .card-head{margin-bottom:14px}.ride-form-card .card-head h3{font-size:17px;margin-top:2px}.ride-form-card .card-head>span{font-size:9px}.ride-gpx-action{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--border);background:var(--bg);border-radius:14px;margin:3px 0 10px}.ride-gpx-action strong{display:block;font-size:11px}.ride-gpx-action small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.ride-gpx-action .btn{min-height:40px;padding:10px 13px}.ride-form-card .gpx-hint{margin-bottom:12px}.ride-form-card #saveRide{margin-top:2px}.ride-form-card .form-grid{grid-template-columns:1fr 1fr}
+@media(max-width:620px){.workout-item{grid-template-columns:48px 1fr;padding:14px;gap:11px}.workout-icon{width:48px;height:48px;font-size:23px;border-radius:15px}.workout-main h3{font-size:14px}.workout-open{grid-column:1/-1;width:100%}.workout-section-label{align-items:flex-start;flex-direction:column;gap:2px}.ride-form-card .form-grid{grid-template-columns:1fr 1fr}.ride-gpx-action{align-items:flex-start}.ride-gpx-action .btn{flex-shrink:0}}
+.gpx-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.gpx-info-grid>div{background:var(--bg);border:1px solid var(--border);border-radius:13px;padding:11px}.gpx-info-grid small{display:block;color:var(--muted);font-size:9px;margin-bottom:4px}.gpx-info-grid strong{display:block;font-size:14px;line-height:1.15}.gpx-info-card{margin-bottom:10px}.gpx-info-card .card-head>span{font-size:9px;color:var(--muted)}@media(max-width:620px){.gpx-info-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* CicloFit 4.5.4 — mapa e dados GPX em um único bloco */
+.gpx-map-card{padding:10px;overflow:hidden}
+.gpx-map-header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 4px 9px}
+.gpx-map-header h3{margin:2px 0 0;font-size:14px}
+.gpx-data-note{font-size:9px;color:var(--muted);text-align:right}
+.gpx-map-card .gpx-info-grid{margin:0 2px}
+.map-divider{height:1px;background:var(--border);margin:10px 2px}
+.gpx-map-card .real-map{height:420px}
+.gpx-map-card .map-location{margin-bottom:2px}
+@media(max-width:620px){.gpx-map-header{align-items:flex-start}.gpx-data-note{max-width:135px}.gpx-map-card .real-map{height:360px}}
+
+.ride-zone-detail{margin-top:9px;padding:7px 9px;border-radius:10px;background:rgba(255,80,100,.07);color:var(--muted);font-size:9px;font-weight:700}.ride-zone-detail strong{color:var(--text)}
+
+.ride-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:4px 0 12px}.ride-mode{border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:15px;padding:13px;text-align:left;cursor:pointer;transition:.18s}.ride-mode strong,.ride-mode small{display:block}.ride-mode strong{font-size:11px}.ride-mode small{color:var(--muted);font-size:9px;margin-top:3px}.ride-mode.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:rgba(183,245,0,.06)}.manual-ride-fields{margin-bottom:12px}.gpx-ride-fields[hidden],.manual-ride-fields[hidden]{display:none}@media(max-width:620px){.ride-mode-grid{grid-template-columns:1fr}.ride-meta{grid-template-columns:repeat(2,1fr)}}
+.gpx-detail-modal{max-width:920px;width:min(94vw,920px);max-height:92vh;overflow:auto}.gpx-detail-map{height:330px;border-radius:18px;overflow:hidden;margin:14px 0 8px;background:#e8edf2}.gpx-detail-location{font-size:13px;font-weight:700;margin:8px 0 14px}.gpx-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.gpx-detail-grid>div{padding:13px;border:1px solid var(--line,#e5e7eb);border-radius:14px;background:var(--surface,#fff)}.gpx-detail-grid small{display:block;color:var(--muted,#6b7280);font-size:11px;margin-bottom:5px}.gpx-detail-grid strong{font-size:16px}.gpx-estimated{font-size:9px;color:#9a6700;margin-left:5px}.gpx-detail-note{font-size:11px;color:#6b7280;margin:14px 2px 0}.route-pill{cursor:pointer}.route-pill:hover{opacity:.8}@media(max-width:640px){.gpx-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gpx-detail-map{height:270px}}
+
+/* CicloFit 4.9.8 — visual refinements for Pedal / GPX */
+.ride-mode-grid{gap:10px}
+.ride-mode{background:var(--card);border-color:var(--border);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}
+.ride-mode:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(17,24,39,.07)}
+.ride-mode.active{background:linear-gradient(135deg,rgba(183,245,0,.16),rgba(101,184,255,.08));border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent),0 8px 22px rgba(183,245,0,.10)}
+#gpxModeBtn.active{background:linear-gradient(135deg,rgba(183,245,0,.18),rgba(101,184,255,.10));color:var(--text)}
+#manualModeBtn.active{background:linear-gradient(135deg,rgba(165,140,255,.13),rgba(101,184,255,.08));border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple),0 8px 22px rgba(165,140,255,.08)}
+.route-pill{border:1px solid rgba(101,184,255,.22);background:linear-gradient(135deg,rgba(101,184,255,.14),rgba(183,245,0,.08));color:var(--text);box-shadow:0 5px 16px rgba(101,184,255,.08);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.route-pill:hover{opacity:1;transform:translateY(-1px);border-color:rgba(183,245,0,.38);box-shadow:0 8px 20px rgba(101,184,255,.13)}
+.gpx-detail-modal{border:1px solid rgba(183,245,0,.14);box-shadow:0 28px 80px rgba(0,0,0,.28);background:linear-gradient(180deg,var(--card),var(--bg));padding:20px}
+.gpx-detail-modal .close{transition:.18s ease}
+.gpx-detail-modal .close:hover{transform:rotate(4deg) scale(1.04);border-color:rgba(183,245,0,.4);background:rgba(183,245,0,.08)}
+.gpx-detail-map{border:1px solid var(--border);box-shadow:0 12px 30px rgba(17,24,39,.10)}
+.gpx-detail-location{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:rgba(101,184,255,.06)}
+.gpx-detail-grid>div{border-color:var(--border);box-shadow:0 7px 18px rgba(17,24,39,.05);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.gpx-detail-grid>div:hover{transform:translateY(-2px);border-color:rgba(183,245,0,.32);box-shadow:0 10px 24px rgba(17,24,39,.08)}
+.gpx-detail-grid>div:nth-child(4n+1){background:linear-gradient(135deg,rgba(183,245,0,.12),rgba(255,255,255,.72))}
+.gpx-detail-grid>div:nth-child(4n+2){background:linear-gradient(135deg,rgba(101,184,255,.12),rgba(255,255,255,.72))}
+.gpx-detail-grid>div:nth-child(4n+3){background:linear-gradient(135deg,rgba(165,140,255,.11),rgba(255,255,255,.72))}
+.gpx-detail-grid>div:nth-child(4n){background:linear-gradient(135deg,rgba(22,163,74,.10),rgba(255,255,255,.72))}
+body[data-theme="dark"] .gpx-detail-grid>div:nth-child(4n+1){background:linear-gradient(135deg,rgba(183,245,0,.12),rgba(21,26,16,.92))}
+body[data-theme="dark"] .gpx-detail-grid>div:nth-child(4n+2){background:linear-gradient(135deg,rgba(101,184,255,.12),rgba(21,26,16,.92))}
+body[data-theme="dark"] .gpx-detail-grid>div:nth-child(4n+3){background:linear-gradient(135deg,rgba(165,140,255,.11),rgba(21,26,16,.92))}
+body[data-theme="dark"] .gpx-detail-grid>div:nth-child(4n){background:linear-gradient(135deg,rgba(22,163,74,.10),rgba(21,26,16,.92))}
+@media(max-width:640px){.gpx-detail-modal{width:96vw;padding:15px;border-radius:22px}.gpx-detail-map{height:285px}.gpx-detail-grid{gap:8px}.gpx-detail-grid>div{padding:11px}}
+.ride-mode-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 16px}.ride-mode-btn{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:12px;padding:11px 12px;font-weight:700;cursor:pointer;transition:.2s}.ride-mode-btn.active{background:var(--accent);color:#111;border-color:var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.12)}.manual-ride-fields{margin-top:12px}.ride-zone-detail .muted{opacity:.72}.zone-share{margin-left:6px;padding:2px 6px;border-radius:999px;background:rgba(183,245,0,.10);color:var(--green);font-size:8px;font-weight:900}
+
+/* CicloFit 5.0 — Sessão Pedal / GPX: visual inspirado na referência de performance */
+.gpx-detail-modal{
+  width:min(760px,100%);max-width:760px;max-height:95vh;padding:12px 12px 18px;
+  background:#000;color:#fff;border:1px solid #202020;border-radius:28px 28px 0 0;
+  box-shadow:0 -24px 80px rgba(0,0,0,.55);overflow:auto;
+}
+.gpx-sheet-handle{width:44px;height:5px;border-radius:99px;background:#454545;margin:2px auto 12px}
+.gpx-sheet-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 12px}
+.gpx-kicker{font-size:9px;letter-spacing:.13em;font-weight:900;color:#777}
+.gpx-sheet-head h2{font-size:20px;margin:4px 0 0;color:#fff}
+.gpx-sheet-head p{font-size:10px;color:#777;margin:4px 0 0}
+.gpx-close{width:36px;height:36px;border:1px solid #292929;background:#151515;color:#fff;border-radius:50%;font-size:20px;cursor:pointer}
+.gpx-detail-map-wrap{position:relative;margin-bottom:10px}
+.gpx-detail-map{height:270px;border-radius:18px;margin:0;border:1px solid #272727;box-shadow:none;filter:saturate(.88) contrast(1.03)}
+.gpx-map-badge{position:absolute;left:10px;bottom:10px;padding:7px 10px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);font-size:10px;font-weight:800;color:#ddd;max-width:80%;z-index:500}
+.gpx-performance-card{background:#000;border-top:1px solid #202020;border-bottom:1px solid #202020}
+.gpx-metric-grid{display:grid;grid-template-columns:1fr 1fr}
+.gpx-ref-metric{min-height:98px;padding:14px 13px;border-right:1px solid #202020;border-bottom:1px solid #202020}
+.gpx-ref-metric:nth-child(even){border-right:0}
+.gpx-ref-label{display:flex;align-items:center;justify-content:space-between;gap:5px;color:#858585;font-size:12px;font-weight:900;line-height:1.1}
+.gpx-ref-label em{font-style:normal;font-size:7px;font-weight:700;color:#777}
+.gpx-ref-icon{font-size:21px;line-height:1;color:#eee}
+.tone-orange .gpx-ref-icon{color:#ff7a00}.tone-teal .gpx-ref-icon{color:#5fc2b3}.tone-purple .gpx-ref-icon{color:#b02bd0}.tone-red .gpx-ref-icon{color:#ff5353}
+.gpx-ref-value{margin-top:8px;font-size:34px;line-height:1;font-weight:900;letter-spacing:-.045em;color:#fff}
+.gpx-power-zone-section{border-bottom:1px solid #202020}
+.gpx-zone-title{text-align:center;padding:13px 0 8px;color:#858585;font-size:14px;font-weight:900;letter-spacing:.03em}
+.gpx-zone-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:0 12px 13px;align-items:end}
+.gpx-zone{text-align:center}.gpx-zone>b{display:block;font-size:11px;color:#eee;margin-bottom:5px}
+.gpx-zone-track{height:115px;border:1px solid #444;border-radius:10px;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(#090909,#1a1a1a)}
+.gpx-zone-track i{display:block;width:100%;border-radius:8px 8px 0 0}.gpx-zone-track i.gray{background:#666}.gpx-zone-track i.blue{background:#287bdc}.gpx-zone-track i.green{background:#3ca143}.gpx-zone-track i.yellow{background:#ffc52d}.gpx-zone-track i.orange{background:#ff7a00}.gpx-zone-track i.red{background:#e52d35}.gpx-zone-track i.purple{background:#8121aa}
+.gpx-zone>strong{display:block;color:#eee;font-size:11px;margin-top:6px}
+.gpx-zone-bottom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #202020}
+.gpx-zone-bottom>div{min-height:112px;padding:14px;border-right:1px solid #202020}.gpx-zone-bottom>div:last-child{border-right:0}
+.gpx-zone-bottom small{display:flex;justify-content:space-between;color:#858585;font-size:13px;font-weight:900}
+.gpx-zone-bottom strong{display:block;margin-top:12px;font-size:48px;line-height:1;font-weight:900}
+.gpx-zone-bottom em{font-size:17px;font-style:normal;font-weight:500}
+.gpx-zone-empty{padding:18px 14px;color:#858585;text-align:center}.gpx-zone-empty span{display:block;font-size:13px;font-weight:900}.gpx-zone-empty small{display:block;margin-top:6px;font-size:10px}
+.gpx-sheet-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 12px 5px;color:#777;font-size:11px;font-weight:900}.gpx-sheet-footer strong{font-size:16px;color:#fff}
+.gpx-detail-note{color:#666;font-size:9px;margin:9px 4px 0}
+body[data-theme="dark"] .gpx-detail-modal{background:#000}
+@media(max-width:520px){
+ .gpx-detail-modal{padding:8px 8px 15px;border-radius:24px 24px 0 0}
+ .gpx-detail-map{height:220px}.gpx-ref-metric{min-height:88px;padding:12px 10px}.gpx-ref-value{font-size:29px}
+ .gpx-zone-bars{gap:5px;padding-left:8px;padding-right:8px}.gpx-zone-track{height:96px}.gpx-zone-bottom>div{min-height:100px}.gpx-zone-bottom strong{font-size:39px}
+}
+.ride-actions .mini-action:disabled{opacity:.38;cursor:not-allowed;filter:grayscale(1);transform:none!important}
+.ride-actions .mini-action:disabled:hover{background:inherit;border-color:inherit;transform:none!important}
+
+/* Aba flutuante — Treino de academia | mantém a paleta existente do CicloFit */
+.gym-workout-overlay{align-items:flex-end;padding:18px;background:rgba(5,7,3,.58);backdrop-filter:blur(7px)}
+.gym-workout-sheet{width:min(620px,calc(100% - 28px));max-height:min(88vh,780px);margin:0 auto 14px;padding:12px 18px 18px;border-radius:28px;background:var(--bg);border:1px solid var(--border);box-shadow:0 24px 70px rgba(0,0,0,.30);animation:gymSheetUp .24s ease-out}
+.gym-sheet-handle{width:42px;height:4px;border-radius:99px;background:var(--muted);opacity:.45;margin:2px auto 14px}
+.gym-sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.gym-sheet-head h2{font:800 23px/1.15 var(--display);margin:4px 0}
+.gym-sheet-head p{margin:5px 0 0}
+.gym-close{float:none;flex:0 0 auto}
+.gym-live-bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin:14px 0;padding:10px 12px;border-radius:14px;background:var(--dark);color:#fff;border:1px solid rgba(255,255,255,.06)}
+.gym-live-bar span{font-size:9px;font-weight:900;color:var(--accent);letter-spacing:.08em}
+.gym-live-bar b{font-size:10px}
+.gym-live-bar small{font-size:9px;color:#aeb3be}
+.gym-workout-sheet #exerciseList{max-height:43vh;overflow:auto;padding-right:3px;scrollbar-width:thin}
+.gym-workout-sheet .exercise{border-radius:17px;margin:9px 0;padding:13px;background:var(--card);box-shadow:0 4px 14px rgba(17,24,39,.025)}
+.gym-workout-sheet .exercise-top strong{color:var(--accent)}
+.gym-workout-sheet .sets input{min-width:0}
+.gym-workout-sheet .timer{margin:14px 0 12px;padding:13px;border-radius:17px}
+.gym-workout-sheet .timer strong{font-size:43px}
+.gym-workout-sheet #finishWorkout{min-height:48px}
+@keyframes gymSheetUp{from{transform:translateY(28px);opacity:.65}to{transform:translateY(0);opacity:1}}
+@media(max-width:620px){.gym-workout-overlay{padding:0}.gym-workout-sheet{width:100%;max-height:92vh;margin:0;border-radius:27px 27px 0 0;padding:10px 14px calc(14px + env(safe-area-inset-bottom))}.gym-workout-sheet #exerciseList{max-height:39vh}.gym-live-bar{grid-template-columns:auto 1fr;gap:4px 9px}.gym-live-bar small{grid-column:2}}
+
+/* Ajustes da aba flutuante de treino: confirmação de séries mais clara */
+.gym-workout-sheet .set-check{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;font-size:16px;font-weight:900;border:1px solid var(--border);background:var(--bg);color:var(--muted);transition:.18s;box-shadow:none}
+.gym-workout-sheet .set-check:hover{transform:translateY(-1px);border-color:var(--accent);color:var(--text)}
+.gym-workout-sheet .set-check.done{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 5px 14px rgba(183,245,0,.22)}
+.gym-workout-sheet #finishWorkout{font-size:13px;letter-spacing:.01em}
+
+
+/* CicloFit 5.0 — aba de treino realmente responsiva + timer de descanso */
+.gym-workout-overlay{
+  align-items:flex-end;
+  padding:clamp(8px,2vw,18px);
+  overscroll-behavior:contain;
+}
+.gym-workout-sheet{
+  width:min(620px,100%);
+  max-width:620px;
+  max-height:min(90dvh,780px);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.gym-sheet-head>div:first-child{min-width:0;flex:1}
+.gym-sheet-head h2{overflow-wrap:anywhere}
+.gym-live-bar{flex:0 0 auto}
+.gym-workout-sheet #exerciseList{
+  min-height:0;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.gym-workout-sheet .timer{
+  flex:0 0 auto;
+  transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.gym-workout-sheet .timer-progress i{
+  background:var(--accent);
+  transition:width 1s linear,background-color .18s ease;
+}
+.gym-workout-sheet .timer strong{
+  color:#fff;
+  transition:color .18s ease;
+}
+.gym-workout-sheet .timer.timer-finished{
+  background:var(--dark);
+  border:1px solid rgba(183,245,0,.35);
+}
+.gym-workout-sheet .timer.timer-finished strong{
+  color:var(--accent);
+}
+.gym-workout-sheet .timer.timer-finished .timer-progress i{
+  background:var(--accent);
+}
+.gym-workout-sheet .timer-actions .btn{
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+@media(max-width:620px){
+  .gym-workout-overlay{
+    padding:0;
+    align-items:flex-end;
+  }
+  .gym-workout-sheet{
+    width:100%;
+    max-width:none;
+    max-height:94dvh;
+    height:auto;
+    margin:0;
+    border-radius:27px 27px 0 0;
+    padding:9px 12px calc(12px + env(safe-area-inset-bottom));
+  }
+  .gym-sheet-handle{margin-bottom:11px}
+  .gym-sheet-head{gap:8px}
+  .gym-sheet-head h2{font-size:20px}
+  .gym-sheet-head p{font-size:10px}
+  .gym-close{
+    width:40px;
+    height:40px;
+    flex:0 0 40px;
+  }
+  .gym-live-bar{
+    margin:10px 0;
+    grid-template-columns:auto 1fr;
+    gap:4px 8px;
+    padding:9px 10px;
+  }
+  .gym-live-bar small{grid-column:2}
+  .gym-workout-sheet #exerciseList{
+    max-height:42dvh;
+    padding-right:1px;
+  }
+  .gym-workout-sheet .exercise{
+    padding:11px;
+    border-radius:15px;
+  }
+  .gym-workout-sheet .exercise-top{
+    align-items:flex-start;
+  }
+  .gym-workout-sheet .exercise-top h3{
+    font-size:12px;
+  }
+  .gym-workout-sheet .sets{
+    grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 40px;
+    gap:5px;
+  }
+  .gym-workout-sheet .sets input{
+    min-width:0;
+    padding:9px 7px;
+    font-size:12px;
+  }
+  .gym-workout-sheet .set-check{
+    width:38px;
+    height:38px;
+  }
+  .gym-workout-sheet .timer{
+    margin:10px 0;
+    padding:10px;
+  }
+  .gym-workout-sheet .timer strong{
+    font-size:40px;
+  }
+  .gym-workout-sheet .timer-actions{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:5px;
+  }
+  .gym-workout-sheet .timer-actions .btn{
+    min-height:40px;
+    padding:8px 3px;
+    font-size:10px;
+  }
+  .gym-workout-sheet #finishWorkout{
+    min-height:46px;
+  }
+}
+@media(max-width:380px){
+  .gym-workout-sheet{padding-left:9px;padding-right:9px}
+  .gym-sheet-head h2{font-size:18px}
+  .gym-workout-sheet .timer-actions .btn{font-size:9px}
+  .gym-workout-sheet #exerciseList{max-height:39dvh}
+}
+
+/* Pedal: histórico visual sutil */
+.ride-item-subtle{padding:13px 14px;border:1px solid color-mix(in srgb,var(--border) 72%,transparent);border-radius:13px;background:color-mix(in srgb,var(--card) 82%,transparent);box-shadow:none;margin-bottom:7px}
+.ride-item-subtle .ride-top strong{font-size:11px;font-weight:700}
+.ride-item-subtle .ride-route-name{font-size:8px;opacity:.65;margin-top:2px}
+.ride-item-subtle .ride-meta{gap:6px;margin-top:8px}
+.ride-item-subtle .ride-meta span{background:color-mix(in srgb,var(--bg) 72%,transparent);padding:7px 6px}
+.ride-item-subtle .ride-meta b{font-size:11px;font-weight:700}
+.ride-item-subtle .ride-actions{margin-top:7px}
+.ride-item-subtle .mini-action{padding:6px 8px;font-size:9px;background:transparent;opacity:.75}
+.ride-form-card{box-shadow:none}
+.ride-mode-btn{font-size:10px}
+.auth-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--bg,#f5f6f2)}.auth-card{width:min(420px,100%);padding:28px;border-radius:28px;background:var(--card,#fff);box-shadow:0 20px 60px rgba(0,0,0,.12)}.auth-logo{width:150px;height:150px;border-radius:24px;display:grid;place-items:center;background:transparent;margin:0 auto 10px;overflow:hidden}.auth-logo img{width:100%;height:100%;object-fit:contain;display:block}.auth-card h1{margin:4px 0}.auth-card label{display:block;margin:14px 0 0}.auth-card input,.admin-panel input,.admin-panel select{width:100%;box-sizing:border-box;margin-top:7px;padding:12px 13px;border:1px solid rgba(0,0,0,.1);border-radius:12px;background:transparent}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin:20px 0;background:rgba(0,0,0,.04);border-radius:14px}.auth-tab{border:0;padding:10px;border-radius:10px;background:transparent}.auth-tab.active{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);font-weight:700}.auth-hint,.auth-error{margin-top:12px;font-size:12px}.auth-error{color:#b42318}.admin-panel{display:none;padding:20px 20px 100px}.admin-panel.active{display:block}.admin-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 14px;padding:5px;border:1px solid var(--border);border-radius:14px;background:var(--bg);position:sticky;top:61px;z-index:15}.admin-tab{border:0;background:transparent;color:var(--muted);padding:10px 8px;border-radius:10px;font-size:11px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:.2s}.admin-tab:hover{color:var(--text);background:rgba(128,128,128,.08)}.admin-tab.active{background:var(--card);color:var(--text);box-shadow:0 2px 9px rgba(0,0,0,.08)}.admin-tab-panel{display:none}.admin-tab-panel.active{display:block}@media(max-width:620px){.admin-tabs{top:57px;gap:3px;padding:4px}.admin-tab{padding:9px 4px;font-size:9px}}.admin-actions{display:flex;gap:10px;margin-bottom:16px}.admin-list{display:grid;gap:9px;margin-top:16px}.admin-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-top:1px solid rgba(0,0,0,.07)}.admin-row small{display:block;opacity:.65}.admin-row-actions{display:flex;gap:6px;flex-wrap:wrap}.mini-danger{border:0;background:transparent;color:#b42318}.validity-expired{color:#b42318;font-weight:700}.validity-ok{color:#287a3d;font-weight:700}.admin-panel .form-grid small{display:block;margin-top:4px;opacity:.6}.auth-logout{position:fixed;top:14px;right:14px;z-index:10000}.student-banner{margin-bottom:16px}.notification-dot{display:inline-flex;min-width:20px;height:20px;padding:0 5px;border-radius:10px;align-items:center;justify-content:center;background:#b42318;color:#fff;font-size:11px}
+.header-actions{display:flex;gap:7px;align-items:center}.logout-header{font-size:18px}.custom-workout-builder{margin-top:10px}.exercise-picker,.selected-exercises{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}.picker-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.picker-head strong{font-size:12px}.picker-head small{font-size:9px;color:var(--muted)}.exercise-search{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);margin-bottom:9px}.exercise-catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;max-height:300px;overflow:auto}.catalog-item{border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:12px;padding:10px;text-align:left;cursor:pointer}.catalog-item:hover{border-color:var(--accent);transform:translateY(-1px)}.catalog-item strong{display:block;font-size:10px}.catalog-item small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.selected-exercise-list{display:grid;gap:7px}.selected-exercise{display:grid;grid-template-columns:1fr 70px 70px 32px;gap:6px;align-items:center;padding:9px;border:1px solid var(--border);border-radius:11px;background:var(--bg)}.selected-exercise strong{font-size:10px}.selected-exercise small{display:block;color:var(--muted);font-size:8px}.selected-exercise input{width:100%;box-sizing:border-box;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text)}.remove-exercise{border:0;background:transparent;color:var(--danger);cursor:pointer;font-size:18px}@media(max-width:620px){.exercise-catalog{grid-template-columns:1fr}.selected-exercise{grid-template-columns:1fr 60px 60px 30px}}
+
+/* Painel Admin — barra superior */
+.admin-topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;margin:-20px -20px 18px;padding:12px 20px;background:color-mix(in srgb,var(--card) 94%,transparent);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
+.admin-topbar>div:first-child{display:flex;flex-direction:column;gap:2px}.admin-topbar strong{font-size:14px}.admin-topbar-actions{display:flex;align-items:center;gap:8px}.admin-theme-btn{min-width:40px;width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-size:18px}
+@media(max-width:620px){.admin-topbar{margin:-20px -12px 16px;padding:10px 12px}.admin-topbar-actions{gap:6px}.admin-theme-btn{min-width:auto}.admin-topbar .btn{padding:9px 10px;font-size:11px}}
+
+/* v22 — ajustes de treino e construtor */
+.gym-sheet-head{position:relative;z-index:2}.gym-close{position:relative;z-index:10;pointer-events:auto!important;touch-action:manipulation}.admin-subhead{margin-top:20px;padding-top:12px;border-top:1px solid var(--border)}
+
+
+/* v27 — cabeçalho superior do painel Admin */
+.admin-topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px;padding:10px 16px;margin:0 0 18px;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:0 0 18px 18px;box-shadow:0 10px 28px rgba(17,24,39,.07)}
+.admin-brand{display:flex;align-items:center;gap:12px;min-width:0}
+.admin-brand img{width:116px;height:38px;object-fit:contain;object-position:left center;display:block}
+.admin-brand>div{display:flex;flex-direction:column;min-width:0}
+.admin-brand strong{font-size:14px;line-height:1.1}
+.admin-topbar-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.admin-theme-btn{width:40px;height:40px;padding:0;border-radius:12px;display:grid;place-items:center;font-size:18px}
+.admin-topbar .icon-btn{border:1px solid var(--border);background:var(--card);color:var(--text)}
+.admin-topbar .icon-btn:hover{border-color:rgba(183,245,0,.45);transform:translateY(-1px)}
+@media(max-width:620px){.admin-topbar{margin:0 0 14px;padding:9px 11px;border-radius:0 0 15px 15px}.admin-brand img{width:92px;height:32px}.admin-brand{gap:8px}.admin-brand strong{font-size:12px}.admin-brand .eyebrow{font-size:7px}.admin-topbar-actions .btn{padding:9px 11px;font-size:11px}}
+/* v28: cabeçalho administrativo simplificado */
+.admin-topbar .admin-brand{display:flex;align-items:center;min-width:0;}
+.admin-topbar .admin-brand img{display:block;width:auto;height:42px;max-width:150px;object-fit:contain;object-position:left center;}
+@media(max-width:620px){.admin-topbar .admin-brand img{height:34px;max-width:120px;}}
+
+/* v29: Admin — tema somente no topo */
+#adminPanel .admin-theme-btn{display:inline-flex!important;}
+#adminPanel .admin-tab-panel .admin-theme-btn,#adminPanel .admin-actions .admin-theme-btn{display:none!important;}
+.admin-brand img{display:block;width:auto;height:42px;max-width:180px;object-fit:contain;}
+/* v29 — painel Admin: identidade somente pela logo no topo; tema somente no topo */
+#adminPanel .admin-topbar .admin-brand img{display:block;width:auto;height:42px;max-width:150px;object-fit:contain;object-position:left center;}
+#adminPanel .admin-actions .admin-theme-btn,
+#adminPanel .admin-tab-panel .admin-theme-btn{display:none!important;}
+@media(max-width:620px){#adminPanel .admin-topbar .admin-brand img{height:34px;max-width:120px;}}
+
+/* v30 — logos proporcionais */
+#adminPanel .admin-topbar .admin-brand img{width:45px;height:45px;max-width:45px;object-fit:contain;object-position:center;}
+.app-brand-logo{width:45px;height:45px;display:flex;align-items:center;justify-content:center;flex:0 0 45px;}
+.app-brand-logo img{display:block;width:45px;height:45px;object-fit:contain;object-position:center;}
+@media(max-width:620px){#adminPanel .admin-topbar .admin-brand img{width:45px;height:45px;max-width:45px;} .app-brand-logo{width:45px;height:45px;flex-basis:45px}.app-brand-logo img{width:45px;height:45px;}}
+
+/* v31 — logo 60x60 no painel Admin e cabeçalho do usuário */
+#adminPanel .admin-topbar{min-height:84px;padding:10px 16px;}
+#adminPanel .admin-topbar .admin-brand img{width:60px!important;height:60px!important;max-width:60px!important;object-fit:contain;object-position:center;}
+#adminPanel .admin-brand{width:60px;height:60px;flex:0 0 60px;}
+.app-brand-logo{width:60px!important;height:60px!important;flex:0 0 60px!important;}
+.app-brand-logo img{width:60px!important;height:60px!important;object-fit:contain;object-position:center;}
+.header-top{min-height:82px;}
+@media(max-width:620px){#adminPanel .admin-topbar{min-height:74px;padding:7px 11px;}#adminPanel .admin-topbar .admin-brand img{width:60px!important;height:60px!important;max-width:60px!important;}#adminPanel .admin-brand{width:60px;height:60px;flex-basis:60px;}.app-brand-logo{width:60px!important;height:60px!important;flex-basis:60px!important;}.app-brand-logo img{width:60px!important;height:60px!important;}}
+
+/* v33 — logo 60x60 na área do usuário e no painel Admin; manter estrutura */
+#adminPanel .admin-topbar .admin-brand,
+#adminPanel .admin-topbar .admin-brand img {
+  width:60px !important;
+  height:60px !important;
+  min-width:60px !important;
+  min-height:60px !important;
+  max-width:60px !important;
+  max-height:60px !important;
+  flex:0 0 60px !important;
+}
+#adminPanel .admin-topbar .admin-brand img,
+.app-brand-logo img {
+  display:block;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+.app-brand-logo {
+  width:60px !important;
+  height:60px !important;
+  min-width:60px !important;
+  min-height:60px !important;
+  max-width:60px !important;
+  max-height:60px !important;
+  flex:0 0 60px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+@media(max-width:620px){
+  #adminPanel .admin-topbar .admin-brand,
+  #adminPanel .admin-topbar .admin-brand img,
+  .app-brand-logo,
+  .app-brand-logo img {
+    width:60px !important;
+    height:60px !important;
+    min-width:60px !important;
+    min-height:60px !important;
+    max-width:60px !important;
+    max-height:60px !important;
+    flex-basis:60px !important;
+  }
+}
+/* v34 — rotina baseada exclusivamente nos treinos atribuídos pelo Admin */
+.day.assigned-day strong{font-size:.72rem;line-height:1.15;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.day.assigned-day .icon{font-size:1.05rem}
+@media (max-width:700px){.day.assigned-day strong{font-size:.66rem}.day.assigned-day .icon{font-size:.95rem}}
+
+/* v35 — organização visual da rotina semanal */
+.week-card{padding:16px}
+.week-card .day-grid{gap:8px}
+.week-card .day{min-height:94px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.week-card .day-name{font-size:9px;font-weight:800;color:var(--muted)}
+.week-card .day.today .day-name{color:#fff}
+.week-card .day .icon{margin:3px 0;font-size:18px;line-height:1}
+.week-card .day strong{font-size:10px;line-height:1.2;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.week-card .day-status{font-size:8px;color:var(--muted);line-height:1.1}
+.week-card .day.today .day-status{color:rgba(255,255,255,.82)}
+.week-card .day:not(.assigned-day) strong{font-weight:700;color:var(--muted)}
+.week-card .day.assigned-day{border-color:rgba(183,245,0,.28);background:rgba(183,245,0,.055)}
+.week-card .day.assigned-day.today{background:var(--accent);border-color:var(--accent)}
+@media(max-width:700px){.week-card{padding:12px}.week-card .day-grid{gap:5px}.week-card .day{min-height:88px;padding:8px 3px}.week-card .day .icon{font-size:16px}.week-card .day strong{font-size:8px}.week-card .day-status{font-size:7px}}
+/* v37 — rotina semanal: cada treino aparece apenas no dia agendado */
+.week-card .day-more{font-size:7px;color:var(--accent);font-weight:800;line-height:1.1}
+.week-card .day.today .day-more{color:#fff}
+@media(max-width:700px){.week-card .day-more{font-size:6.5px}}
+/* v40 — indicação visual de conclusão bloqueada fora do dia agendado */
+#finishWorkout:disabled{opacity:.48;cursor:not-allowed;filter:saturate(.45);box-shadow:none}
+.mini-add-exercise{padding:8px 10px;font-size:10px;white-space:nowrap}.new-exercise-note{margin-top:6px}
+
+/* CicloFit 5.0 v47 — organização da aba Treinos no painel Admin */
+.admin-workouts-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.admin-workouts-head h3{margin:3px 0 2px;font-size:18px}.admin-workouts-head p{margin:0;font-size:10px}.admin-workout-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 14px}.admin-workout-stats>div{padding:12px;border:1px solid var(--border);border-radius:14px;background:var(--bg)}.admin-workout-stats strong{display:block;font-size:20px;line-height:1}.admin-workout-stats small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.admin-workout-tools{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:8px;padding:12px;border:1px solid var(--border);border-radius:15px;background:var(--bg)}.admin-workout-tools .exercise-search{margin:0;background:var(--card)}.admin-workout-tools select{margin:0;background:var(--card)}.admin-workout-row{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--border);border-radius:15px;background:var(--card);box-shadow:0 4px 14px rgba(17,24,39,.025)}.admin-workout-row.is-expired{opacity:.78}.admin-workout-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--bg);font-size:22px;border:1px solid var(--border)}.admin-workout-main{min-width:0}.admin-workout-title{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.admin-workout-title strong{font-size:12px}.admin-workout-title span{font-size:7px;font-weight:900;padding:4px 7px;border-radius:999px;background:rgba(22,163,74,.08)}.admin-workout-student{font-size:10px;font-weight:800;margin-top:3px}.admin-workout-main small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.admin-empty{padding:28px 15px;text-align:center;border:1px dashed var(--border);border-radius:15px;color:var(--muted)}.admin-empty strong{display:block;color:var(--text);font-size:11px}.admin-empty small{display:block;margin-top:4px;font-size:9px}@media(max-width:620px){.admin-workouts-head{flex-direction:column}.admin-workouts-head .btn{width:100%}.admin-workout-tools{grid-template-columns:1fr}.admin-workout-row{grid-template-columns:40px 1fr}.admin-workout-icon{width:40px;height:40px}.admin-workout-row .admin-row-actions{grid-column:1/-1;justify-content:flex-end}.admin-workout-stats{gap:6px}}
+
+/* v49 — informações do perfil integradas ao painel do Admin */
+.admin-student-row{align-items:flex-start;gap:16px}
+.admin-student-info{display:flex;flex-direction:column;gap:3px;min-width:0}
+.admin-student-info strong{font-size:1rem}
+.admin-student-info small{line-height:1.35}
+@media(max-width:640px){.admin-student-row{flex-direction:column}.admin-student-row .admin-row-actions{width:100%}.admin-student-row .admin-row-actions .mini-action{flex:1}}
+/* v50 — calendário semanal na página inicial */
+.week-card .day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.week-card .day{min-height:94px;border:1px solid var(--border);border-radius:14px;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--card);transition:.2s}
+.week-card .day.today{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.week-card .day.today .day-name{color:#fff}
+.week-card .day .icon{font-size:19px;line-height:1;margin:3px 0}
+.week-card .day strong{font-size:10px;line-height:1.2;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.week-card .day-status{font-size:8px;color:var(--muted);line-height:1.1}
+.week-card .day:not(.assigned-day) strong{color:var(--muted);font-weight:700}
+.week-card .day.rest-day .icon{opacity:.7}
+.week-card .day.assigned-day{border-color:rgba(183,245,0,.28);background:rgba(183,245,0,.055)}
+.week-card .day.assigned-day.today{background:var(--accent);border-color:var(--accent)}
+.week-card .day.today .day-status{color:rgba(255,255,255,.82)}
+@media(max-width:700px){.week-card{padding:12px}.week-card .day-grid{gap:5px}.week-card .day{min-height:88px;padding:8px 3px;border-radius:11px}.week-card .day .icon{font-size:16px}.week-card .day strong{font-size:8px}.week-card .day-status{font-size:7px}.week-card .day-name{font-size:8px}}
+
+/* v54 — refinamentos de visualização, andamento, perfil e cargas */
+.week-card{padding:14px;background:linear-gradient(180deg,var(--card),var(--bg));overflow:hidden}
+.week-card .day-grid{gap:9px}
+.week-card .day{position:relative;min-height:116px;padding:10px 5px;border-radius:16px;background:var(--card);box-shadow:0 5px 14px rgba(17,24,39,.04)}
+.week-card .day-date{font-size:10px;font-weight:900;color:var(--muted);line-height:1}
+.week-card .day.today .day-date{color:#fff}
+.week-card .day .icon{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--bg);margin:5px 0;font-size:19px}
+.week-card .day.today .icon{background:rgba(255,255,255,.16)}
+.week-card .day.done .icon{background:rgba(22,163,74,.10);color:var(--green);font-weight:900}
+.week-card .day.today.done .icon{color:#fff;background:rgba(255,255,255,.16)}
+.week-card .day strong{font-size:10px;min-height:24px;display:flex;align-items:center;justify-content:center;white-space:normal}
+.week-card .day-status{display:inline-flex;align-items:center;justify-content:center;padding:4px 6px;border-radius:999px;background:var(--bg);font-size:8px;font-weight:800}
+.week-card .day.done .day-status{color:var(--green);background:rgba(22,163,74,.10)}
+.week-card .day.today .day-status{background:rgba(255,255,255,.16);color:#fff}
+.week-card .day.rest-day{opacity:.78}
+@media(max-width:700px){.week-card{padding:10px}.week-card .day-grid{gap:4px}.week-card .day{min-height:103px;padding:8px 2px;border-radius:12px}.week-card .day .icon{width:28px;height:28px;font-size:15px;margin:4px 0}.week-card .day strong{font-size:8px;min-height:22px}.week-card .day-status{font-size:7px;padding:3px 4px}.week-card .day-date{font-size:9px}}
+.in-progress-wrap{border:1px solid rgba(183,245,0,.28);background:linear-gradient(135deg,rgba(183,245,0,.06),var(--card));}
+.in-progress-card{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:11px;align-items:center;padding:11px;border:1px solid var(--border);border-radius:14px;background:var(--card);margin-top:9px}
+.in-progress-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--bg);font-size:21px}
+.in-progress-main{min-width:0}.in-progress-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:3px}.in-progress-top span{font-size:8px;font-weight:900;color:var(--green)}.in-progress-top b{font-size:9px;color:var(--muted)}.in-progress-main>strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.in-progress-main small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.in-progress-bar{height:5px;background:var(--bg);border-radius:99px;overflow:hidden;margin-top:7px}.in-progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit}.in-progress-empty{padding:14px 4px;color:var(--muted);font-size:10px}
+.default-load-label{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:8px;color:var(--muted)}.default-load-input{width:82px!important;margin:0!important;padding:6px 7px!important;font-size:11px!important;font-weight:800}.profile-card{display:flex;align-items:center;gap:14px}.profile-head-copy{min-width:0}.profile-head-copy h2{margin:0;font-size:18px}.profile-head-copy p{margin:3px 0 8px}.photo-upload{display:inline-block}.photo-upload button{min-height:36px;padding:8px 11px;font-size:10px}.avatar{overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover;display:block}.profile-card input[readonly]{opacity:.75;cursor:default}
+@media(max-width:620px){.in-progress-card{grid-template-columns:38px minmax(0,1fr);gap:9px}.in-progress-icon{width:38px;height:38px;font-size:18px}.in-progress-card .mini-action{grid-column:1/-1;width:100%}.in-progress-main>strong{font-size:11px}.profile-card{align-items:flex-start}.profile-head-copy h2{font-size:16px}}
+/* Tipografia ligeiramente maior para leitura em telas pequenas */
+@media(max-width:620px){body{font-size:14px}.page-intro p,.welcome p{font-size:12px}.card{padding:16px}.workout-item h3{font-size:15px}.workout-item p{font-size:11px}.section-head h2{font-size:19px}}
+
+/* v62 — Criar treino: catálogo profissional sem abas */
+.custom-workout-builder{border-color:rgba(183,245,0,.22);background:linear-gradient(180deg,rgba(183,245,0,.035),transparent 35%),var(--card);padding:22px}
+.custom-builder-intro{margin:5px 0 0;font-size:11px;max-width:560px}
+.exercise-count-badge{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:0 11px;border:1px solid rgba(183,245,0,.24);border-radius:999px;background:rgba(183,245,0,.07);color:var(--accent);font-size:10px;font-weight:800;white-space:nowrap}
+.exercise-picker,.selected-exercises{margin-top:18px;padding:18px 0 0;border-top:1px solid var(--border)}
+.picker-head{margin-bottom:14px;align-items:center}.picker-head>div{display:grid;gap:3px}.picker-head strong{font-size:14px}.picker-head small{font-size:10px;line-height:1.45}.picker-kicker{font-size:9px;font-weight:900;letter-spacing:.12em;color:var(--accent)}
+.exercise-catalog-tools{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(170px,1fr) minmax(140px,.8fr);gap:9px;margin-bottom:12px;padding:12px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.018)}
+.catalog-filter-field{display:grid;gap:5px;font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.catalog-filter-field input,.catalog-filter-field select{width:100%;box-sizing:border-box;margin:0;padding:10px 11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:11px;text-transform:none;letter-spacing:0}.catalog-filter-field .exercise-search{margin:0}
+.exercise-catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:330px;padding:2px;scrollbar-width:thin}
+.catalog-item{display:grid;grid-template-columns:36px 1fr 24px;align-items:center;gap:9px;min-height:58px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.018),transparent),var(--bg);color:var(--text);border-radius:13px;padding:9px 10px;text-align:left;cursor:pointer;transition:.18s}
+.catalog-item:hover{border-color:rgba(183,245,0,.5);background:rgba(183,245,0,.045);transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.catalog-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(183,245,0,.08);font-size:17px}.catalog-copy{min-width:0}.catalog-copy strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.catalog-copy small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.catalog-add{display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--border);border-radius:8px;color:var(--accent);font-size:16px;font-weight:700}.catalog-item:hover .catalog-add{border-color:var(--accent);background:rgba(183,245,0,.1)}
+.catalog-empty{display:grid;place-items:center;text-align:center;gap:4px;min-height:90px;padding:16px;border:1px dashed var(--border);border-radius:13px;color:var(--muted)}.catalog-empty strong{font-size:11px;color:var(--text)}.catalog-empty small{font-size:9px}
+.selected-exercises{padding-top:20px}.selected-exercises .picker-head{margin-bottom:11px}.selected-exercise{min-height:54px;padding:10px 11px;border-radius:13px;background:rgba(255,255,255,.018)}
+@media(max-width:760px){.exercise-catalog-tools{grid-template-columns:1fr 1fr}.exercise-catalog-tools .catalog-filter-field:first-child{grid-column:1/-1}.exercise-catalog{grid-template-columns:1fr}}
+@media(max-width:620px){.custom-workout-builder{padding:16px}.picker-head{align-items:flex-start}.mini-add-exercise{width:100%}.exercise-catalog-tools{grid-template-columns:1fr}.exercise-catalog-tools .catalog-filter-field:first-child{grid-column:auto}.exercise-count-badge{font-size:9px}.catalog-item{grid-template-columns:34px 1fr 22px}}
+/* v64 — navegação do painel Admin fixa durante a rolagem */
+#adminPanel .admin-tabs{
+  position:sticky;
+  top:84px;
+  z-index:110;
+}
+@media(max-width:620px){
+  #adminPanel .admin-tabs{top:74px}
+}
+
+/* v65 — tipografia ampliada e proporcional para desktop e mobile */
+body{font-size:15px;line-height:1.55}
+.header-subtitle{font-size:11px}
+.eyebrow{font-size:10px}
+.today-badge{font-size:10px}
+.welcome h1,.page-intro h1{font-size:31px}
+.welcome p,.page-intro p{font-size:13px}
+.hero-copy h2{font-size:26px}
+.hero-copy p{font-size:13px}
+.hero-stats strong{font-size:16px}.hero-stats span{font-size:10px}
+.btn{font-size:13px}
+.section-head h2{font-size:19px}
+.text-btn{font-size:12px}
+.mini-card small,.metric-card small{font-size:11px}
+.day{font-size:10px}.day .icon{font-size:17px}.day strong{font-size:9px}.day-status{font-size:9px}
+.week-current{font-size:12px}
+.goal-row small{font-size:11px}.goal-row b{font-size:12px}
+.insight-card strong{font-size:14px}.insight-card p{font-size:12px}
+.workout-item h3{font-size:15px}.workout-item p{font-size:11px}
+.recovery-head strong{font-size:15px}.recovery-head span{font-size:11px}.recovery-card p{font-size:12px}
+label{font-size:12px}
+input,select,textarea{font-size:15px}
+.advanced summary{font-size:12px}
+.map-caption{font-size:11px}.route-stats span{font-size:10px}.route-stats b{font-size:16px}
+.ride-top strong{font-size:13px}.ride-meta span{font-size:10px}.ride-meta b{font-size:13px}.ride-note{font-size:11px}.mini-action{font-size:11px}
+.progress-hero strong{font-size:38px}.progress-hero>div:first-child>span:last-child{font-size:11px}
+.admin-tab{font-size:12px}
+.admin-topbar strong{font-size:15px}
+.admin-row small{font-size:11px}
+.admin-panel .form-grid small{font-size:10px}
+.notification-dot{font-size:12px}
+.admin-workouts-head h3{font-size:19px}.admin-workouts-head p{font-size:11px}
+.admin-workout-stats small{font-size:10px}.admin-workout-title strong{font-size:13px}.admin-workout-title span{font-size:8px}.admin-workout-student{font-size:11px}.admin-workout-main small{font-size:9px}.admin-empty strong{font-size:12px}.admin-empty small{font-size:10px}
+.custom-builder-intro{font-size:12px}
+.picker-head strong{font-size:15px}.picker-head small{font-size:11px}.picker-kicker{font-size:10px}
+.catalog-filter-field{font-size:10px}.catalog-filter-field input,.catalog-filter-field select{font-size:12px}
+.catalog-copy strong{font-size:12px}.catalog-copy small{font-size:10px}.catalog-empty strong{font-size:12px}.catalog-empty small{font-size:10px}
+.default-load-label{font-size:9px}.default-load-input{font-size:12px!important}
+.in-progress-top span{font-size:9px}.in-progress-top b{font-size:10px}.in-progress-main>strong{font-size:13px}.in-progress-main small{font-size:10px}.in-progress-empty{font-size:11px}
+.profile-head-copy h2{font-size:19px}.photo-upload button{font-size:11px}
+.gpx-kicker{font-size:10px}.gpx-sheet-head p{font-size:11px}.gpx-map-badge{font-size:11px}.gpx-detail-note{font-size:10px}
+.gym-live-bar span{font-size:10px}.gym-live-bar b{font-size:11px}.gym-live-bar small{font-size:10px}
+.ride-mode-btn{font-size:11px}
+
+/* Ajustes mobile: aumenta sem deixar a interface desproporcional */
+@media(max-width:620px){
+  body{font-size:15px;line-height:1.52}
+  .welcome h1,.page-intro h1{font-size:28px}
+  .welcome p,.page-intro p{font-size:13px}
+  .card{padding:17px}
+  .section-head h2{font-size:19px}
+  .workout-item h3{font-size:15px}.workout-item p{font-size:11px}
+  .week-card .day{min-height:106px}
+  .week-card .day-date{font-size:10px}
+  .week-card .day .icon{font-size:16px}
+  .week-card .day strong{font-size:9px}
+  .week-card .day-status{font-size:8px}
+  .admin-tab{font-size:10px;padding:10px 4px}
+  .admin-row small{font-size:11px}
+  .admin-workout-title strong{font-size:13px}
+  .admin-workout-student{font-size:11px}
+  .admin-workout-main small{font-size:10px}
+  .catalog-copy strong{font-size:12px}.catalog-copy small{font-size:10px}
+  .custom-builder-intro{font-size:12px}
+  .picker-head strong{font-size:14px}.picker-head small{font-size:11px}
+  .in-progress-main>strong{font-size:12px}.in-progress-main small{font-size:10px}
+  .profile-head-copy h2{font-size:18px}
+  .gym-workout-sheet .timer strong{font-size:45px}
+}
+
+/* v66 — Criar treino: responsividade completa para mobile */
+.custom-workout-builder,
+.custom-workout-builder *{box-sizing:border-box}
+.custom-workout-builder{width:100%;min-width:0;overflow:visible}
+.custom-workout-builder .card-head{min-width:0}
+.custom-workout-builder .form-grid{min-width:0}
+.custom-workout-builder .form-grid>label{min-width:0}
+.custom-workout-builder .form-grid input,
+.custom-workout-builder .form-grid select,
+.custom-workout-builder .form-grid textarea{min-width:0;max-width:100%}
+.exercise-picker,.selected-exercises{min-width:0}
+.picker-head{min-width:0}
+.picker-head>div{min-width:0}
+.exercise-catalog-tools{min-width:0}
+.exercise-catalog{display:grid;width:100%;min-width:0;max-width:100%;overflow-y:auto;overflow-x:hidden}
+.catalog-item{min-width:0;max-width:100%}
+.catalog-copy{min-width:0;overflow:hidden}
+.selected-exercise-list{width:100%;min-width:0}
+.selected-exercise{width:100%;min-width:0;max-width:100%}
+.selected-exercise>div{min-width:0;overflow:hidden}
+.selected-exercise strong,.selected-exercise small{overflow:hidden;text-overflow:ellipsis}
+.custom-workout-builder #saveCustomWorkout,
+.custom-workout-builder #cancelCustomWorkoutEdit{max-width:100%}
+
+@media(max-width:760px){
+  .custom-workout-builder{padding:16px}
+  .custom-workout-builder .card-head{margin-bottom:2px}
+  .custom-workout-builder .form-grid{grid-template-columns:1fr;gap:10px}
+  .exercise-catalog-tools{grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+  .exercise-catalog-tools .catalog-filter-field:first-child{grid-column:1/-1}
+  .exercise-catalog{grid-template-columns:1fr;max-height:360px;gap:7px}
+  .catalog-item{grid-template-columns:36px minmax(0,1fr) 24px;min-height:60px;padding:9px}
+  .catalog-copy strong{white-space:normal;line-height:1.25}
+  .selected-exercise{grid-template-columns:minmax(0,1fr) 64px 64px 32px;gap:6px;padding:10px}
+  .selected-exercise input{min-width:0}
+  .custom-workout-builder #saveCustomWorkout{width:100%;margin-top:4px}
+}
+
+@media(max-width:520px){
+  .custom-workout-builder{padding:13px;border-radius:16px}
+  .custom-builder-intro{font-size:12px;line-height:1.45}
+  .exercise-picker,.selected-exercises{margin-top:15px;padding-top:15px}
+  .picker-head{gap:8px;margin-bottom:10px}
+  .picker-head strong{font-size:14px}
+  .picker-head small{font-size:10px;line-height:1.4}
+  .picker-kicker{font-size:9px}
+  .mini-add-exercise{width:100%;min-height:42px}
+  .exercise-catalog-tools{grid-template-columns:1fr;padding:9px}
+  .exercise-catalog-tools .catalog-filter-field:first-child{grid-column:auto}
+  .catalog-filter-field{font-size:10px}
+  .catalog-filter-field input,.catalog-filter-field select{font-size:14px;min-height:44px;padding:10px}
+  .exercise-catalog{max-height:320px}
+  .catalog-item{grid-template-columns:34px minmax(0,1fr) 24px;min-height:58px}
+  .catalog-icon{width:32px;height:32px;font-size:16px}
+  .catalog-copy strong{font-size:12px;white-space:normal;word-break:break-word}
+  .catalog-copy small{font-size:10px}
+  .selected-exercise{grid-template-columns:minmax(0,1fr) 58px 58px 30px;gap:5px;padding:9px}
+  .selected-exercise strong{display:block;font-size:12px;line-height:1.3;white-space:normal;word-break:break-word}
+  .selected-exercise small{font-size:10px;line-height:1.3;white-space:normal}
+  .selected-exercise input{font-size:14px!important;padding:8px 5px!important;min-height:40px}
+  .remove-exercise{width:30px;height:40px;font-size:20px}
+  .custom-workout-builder .form-grid input,
+  .custom-workout-builder .form-grid select,
+  .custom-workout-builder .form-grid textarea{font-size:15px;min-height:44px}
+  .custom-workout-builder label{font-size:12px}
+}
+
+@media(max-width:380px){
+  .selected-exercise{grid-template-columns:minmax(0,1fr) 52px 52px 28px}
+  .selected-exercise input{font-size:13px!important}
+  .custom-workout-builder{padding:11px}
+}
+
+
+/* =========================================================
+   CicloFit 5.0 — Login visual premium / inspirado no layout
+   de referência. Apenas apresentação: IDs e fluxo de autenticação
+   existentes permanecem inalterados.
+   ========================================================= */
+.auth-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:clamp(18px,3vw,34px);
+  color:#f4f7f1;
+  background:
+    radial-gradient(circle at 50% 27%,rgba(154,255,0,.09),transparent 23%),
+    radial-gradient(circle at 88% 70%,rgba(116,255,0,.055),transparent 25%),
+    linear-gradient(135deg,#020403 0%,#070a09 48%,#020303 100%);
+}
+.auth-screen::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    linear-gradient(116deg,transparent 38%,rgba(159,255,0,.035) 39%,transparent 40%),
+    linear-gradient(64deg,transparent 61%,rgba(255,255,255,.025) 62%,transparent 63%);
+  transform:rotate(-7deg);
+  pointer-events:none;
+}
+.auth-screen::after{
+  content:"";
+  position:absolute;
+  width:min(720px,92vw);
+  height:min(720px,92vw);
+  right:-24%;
+  top:2%;
+  border:1px solid rgba(159,255,0,.045);
+  border-radius:50%;
+  box-shadow:0 0 100px rgba(131,255,0,.025),inset 0 0 80px rgba(131,255,0,.018);
+  pointer-events:none;
+}
+.auth-bg-glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(55px);
+  pointer-events:none;
+}
+.auth-bg-glow-one{
+  width:320px;height:320px;
+  left:-180px;bottom:-100px;
+  background:rgba(104,255,0,.07);
+}
+.auth-bg-glow-two{
+  width:280px;height:280px;
+  right:-120px;top:18%;
+  background:rgba(144,255,0,.05);
+}
+.auth-bg-lines{
+  position:absolute;
+  left:3%;
+  bottom:5%;
+  width:42vw;
+  max-width:560px;
+  height:28vh;
+  min-height:170px;
+  opacity:.22;
+  background:
+    linear-gradient(166deg,transparent 48%,rgba(141,255,0,.11) 49%,transparent 50%),
+    linear-gradient(168deg,transparent 61%,rgba(255,255,255,.055) 62%,transparent 63%),
+    linear-gradient(164deg,transparent 75%,rgba(141,255,0,.07) 76%,transparent 77%);
+  transform:skewX(-18deg);
+  pointer-events:none;
+}
+
+.auth-card{
+  position:relative;
+  z-index:2;
+  width:min(694px,100%);
+  max-height:calc(100vh - 28px);
+  overflow:auto;
+  padding:clamp(18px,3.2vw,32px) clamp(18px,4vw,42px) 24px;
+  border:0;
+  border-radius:30px;
+  background:rgba(3,6,5,.22);
+  box-shadow:none;
+  text-align:center;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(183,245,0,.28) transparent;
+}
+.auth-card::-webkit-scrollbar{width:5px}
+.auth-card::-webkit-scrollbar-thumb{background:rgba(183,245,0,.25);border-radius:99px}
+
+.auth-logo{
+  position:relative;
+  width:clamp(172px,25vw,300px);
+  height:clamp(172px,25vw,300px);
+  margin:0 auto clamp(8px,1.4vw,14px);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  overflow:visible;
+  background:transparent;
+}
+.auth-logo-halo{
+  position:absolute;
+  inset:7%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(170,255,0,.12),rgba(170,255,0,.025) 48%,transparent 70%);
+  box-shadow:0 0 44px rgba(129,255,0,.10);
+}
+.auth-logo-halo::before{
+  content:"";
+  position:absolute;
+  inset:-7%;
+  border:1px solid rgba(171,255,0,.16);
+  border-radius:50%;
+  box-shadow:0 0 28px rgba(130,255,0,.08);
+}
+.auth-logo img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 10px 26px rgba(118,255,0,.13));
+}
+
+.auth-welcome{
+  margin-top:2px;
+  color:#d2d5d1;
+  font-size:clamp(20px,2.4vw,30px);
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+.auth-welcome strong{
+  display:block;
+  margin-top:5px;
+  color:#9cff00;
+  font-size:clamp(35px,5vw,58px);
+  line-height:.98;
+  font-weight:900;
+  letter-spacing:-.055em;
+  text-shadow:0 0 22px rgba(142,255,0,.15);
+}
+.auth-tagline{
+  margin:10px 0 22px;
+  color:#b9bdb9;
+  font-size:clamp(15px,1.8vw,21px);
+  letter-spacing:.01em;
+}
+
+.auth-tabs{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  padding:0;
+  margin:0 auto 18px;
+  max-width:560px;
+  background:transparent;
+  border-radius:0;
+  border-bottom:1px solid rgba(255,255,255,.20);
+}
+.auth-tab{
+  position:relative;
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#858a86;
+  padding:10px 12px 14px;
+  font:800 clamp(14px,1.7vw,18px)/1 var(--body);
+  letter-spacing:.025em;
+  cursor:pointer;
+  transition:color .2s ease,transform .2s ease;
+}
+.auth-tab:hover{color:#d8ddd7}
+.auth-tab.active{color:#9cff00}
+.auth-tab.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:3px;
+  border-radius:3px;
+  background:#9cff00;
+  box-shadow:0 0 12px rgba(156,255,0,.55);
+}
+.auth-tab-icon{
+  width:27px;
+  height:27px;
+  display:grid;
+  place-items:center;
+  font-size:23px;
+  line-height:1;
+  color:currentColor;
+  font-family:Arial,sans-serif;
+}
+.auth-form{
+  width:min(100%,560px);
+  margin:0 auto;
+  text-align:left;
+}
+.auth-field{
+  position:relative;
+  display:block;
+  margin:0 0 10px!important;
+}
+.auth-field-label{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  white-space:nowrap;
+}
+.auth-input-wrap{
+  position:relative;
+  display:block;
+}
+.auth-input-icon{
+  position:absolute;
+  left:20px;
+  top:50%;
+  z-index:2;
+  transform:translateY(-50%);
+  color:#9cff00;
+  font-size:23px;
+  line-height:1;
+  pointer-events:none;
+}
+.auth-card .auth-input-wrap input{
+  width:100%;
+  min-height:62px;
+  margin:0!important;
+  padding:16px 18px 16px 62px!important;
+  border:1px solid rgba(255,255,255,.27)!important;
+  border-radius:15px!important;
+  background:linear-gradient(110deg,rgba(255,255,255,.045),rgba(255,255,255,.018))!important;
+  color:#f2f4f0!important;
+  font-size:clamp(15px,1.7vw,19px)!important;
+  font-weight:400;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.auth-card .auth-input-wrap input::placeholder{color:#858a87;opacity:1}
+.auth-card .auth-input-wrap input:focus{
+  border-color:#9cff00!important;
+  background:rgba(255,255,255,.055)!important;
+  box-shadow:0 0 0 3px rgba(156,255,0,.08),0 0 22px rgba(156,255,0,.055)!important;
+}
+.auth-submit{
+  min-height:62px;
+  margin-top:8px;
+  border-radius:15px!important;
+  background:linear-gradient(90deg,#96ef00,#b1ff00)!important;
+  color:#071000!important;
+  font-size:clamp(15px,1.8vw,20px)!important;
+  font-weight:900!important;
+  letter-spacing:.01em;
+  box-shadow:0 10px 28px rgba(119,255,0,.10);
+}
+.auth-submit:hover{
+  filter:brightness(1.06);
+  box-shadow:0 12px 32px rgba(119,255,0,.17);
+}
+.auth-submit:active{transform:translateY(1px)}
+
+.auth-hint{
+  width:min(100%,560px);
+  margin:13px auto 0;
+  min-height:18px;
+  color:#7f8580;
+  font-size:11px;
+  line-height:1.45;
+  text-align:center;
+}
+.auth-error{
+  width:min(100%,560px);
+  margin:8px auto 0;
+  padding:10px 12px;
+  border:1px solid rgba(255,83,83,.26);
+  border-radius:11px;
+  background:rgba(255,83,83,.07);
+  color:#ff9b9b;
+  font-size:12px;
+  line-height:1.4;
+  text-align:center;
+}
+.auth-footer-mark{
+  width:min(100%,560px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px auto 0;
+  opacity:.55;
+}
+.auth-footer-mark span{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18));
+}
+.auth-footer-mark span:last-child{
+  background:linear-gradient(90deg,rgba(255,255,255,.18),transparent);
+}
+.auth-footer-mark i{
+  width:7px;height:7px;border:1px solid #9cff00;border-radius:50%;
+  box-shadow:0 0 9px rgba(156,255,0,.45);
+}
+
+/* A página de login deve continuar escura mesmo quando o app estiver em modo claro. */
+body[data-theme="light"] .auth-screen{color:#f4f7f1}
+body[data-theme="light"] .auth-screen .auth-welcome{color:#d2d5d1}
+body[data-theme="light"] .auth-screen .auth-tagline{color:#b9bdb9}
+body[data-theme="light"] .auth-screen .auth-card input{color:#f2f4f0!important}
+
+/* Tablet / mobile */
+@media(max-width:700px){
+  .auth-screen{align-items:flex-start;padding:14px 12px}
+  .auth-card{
+    width:min(100%,560px);
+    max-height:calc(100vh - 20px);
+    padding:8px 8px 18px;
+  }
+  .auth-logo{
+    width:clamp(150px,43vw,230px);
+    height:clamp(150px,43vw,230px);
+    margin-bottom:7px;
+  }
+  .auth-welcome{font-size:20px}
+  .auth-welcome strong{font-size:39px}
+  .auth-tagline{font-size:15px;margin:8px 0 17px}
+  .auth-tab{min-height:52px;font-size:14px;padding-bottom:12px}
+  .auth-tab-icon{font-size:21px}
+  .auth-card .auth-input-wrap input{min-height:58px;font-size:16px!important}
+  .auth-submit{min-height:58px;font-size:17px!important}
+  .auth-bg-lines{left:-10%;width:70vw;bottom:3%}
+}
+@media(max-width:390px){
+  .auth-screen{padding:8px}
+  .auth-card{padding:4px 6px 12px}
+  .auth-logo{width:138px;height:138px}
+  .auth-welcome{font-size:18px}
+  .auth-welcome strong{font-size:34px}
+  .auth-tagline{font-size:14px;margin-bottom:13px}
+  .auth-tab{min-height:48px;font-size:13px;gap:7px}
+  .auth-tab-icon{width:22px;height:22px;font-size:19px}
+  .auth-card .auth-input-wrap input{min-height:54px;padding-left:55px!important;border-radius:13px!important}
+  .auth-input-icon{left:17px;font-size:20px}
+  .auth-submit{min-height:54px}
+  .auth-hint{font-size:10px}
+}
+@media(max-height:700px) and (min-width:701px){
+  .auth-screen{align-items:flex-start}
+  .auth-card{padding-top:8px;padding-bottom:12px}
+  .auth-logo{width:170px;height:170px}
+  .auth-welcome strong{font-size:40px}
+  .auth-tagline{margin:5px 0 10px}
+  .auth-tabs{margin-bottom:10px}
+  .auth-card .auth-input-wrap input,.auth-submit{min-height:52px}
+}
+
+/* =========================================================
+   CicloFit 5.0 — Login Desktop Responsivo
+   Desktop recebe uma composição horizontal premium, enquanto
+   tablet/mobile preservam integralmente o padrão vertical.
+   ========================================================= */
+@media(min-width:701px){
+  .auth-screen{
+    align-items:center;
+    justify-content:center;
+    padding:32px 5vw;
+  }
+
+  .auth-card{
+    width:min(1040px,92vw);
+    max-height:calc(100vh - 64px);
+    min-height:620px;
+    padding:34px 58px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(420px,560px);
+    grid-template-rows:auto 1fr auto;
+    column-gap:72px;
+    align-items:center;
+    text-align:left;
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:34px;
+    background:linear-gradient(135deg,rgba(7,11,9,.72),rgba(2,4,3,.38));
+    box-shadow:0 28px 90px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.025);
+    backdrop-filter:blur(8px);
+  }
+
+  .auth-logo{
+    grid-column:1;
+    grid-row:1 / span 2;
+    width:clamp(250px,29vw,360px);
+    height:clamp(250px,29vw,360px);
+    margin:0 auto 22px;
+  }
+
+  .auth-welcome{
+    grid-column:1;
+    grid-row:3;
+    align-self:start;
+    text-align:center;
+    width:100%;
+    font-size:24px;
+    line-height:1.12;
+    margin:0;
+  }
+
+  .auth-welcome strong{
+    font-size:clamp(42px,4.3vw,58px);
+    margin-top:7px;
+  }
+
+  .auth-tagline{
+    grid-column:1;
+    grid-row:4;
+    text-align:center;
+    width:100%;
+    margin:10px 0 0;
+    font-size:17px;
+  }
+
+  .auth-tabs{
+    grid-column:2;
+    grid-row:1;
+    width:100%;
+    max-width:none;
+    margin:0 0 20px;
+  }
+
+  .auth-form{
+    grid-column:2;
+    grid-row:2 / span 2;
+    width:100%;
+    max-width:none;
+    align-self:start;
+  }
+
+  .auth-card .auth-input-wrap input{
+    min-height:66px;
+    font-size:17px!important;
+  }
+
+  .auth-submit{
+    min-height:64px;
+  }
+
+  .auth-hint{
+    grid-column:2;
+    grid-row:4;
+    width:100%;
+    margin:12px 0 0;
+    text-align:center;
+  }
+
+  .auth-error{
+    grid-column:2;
+    grid-row:5;
+    width:100%;
+  }
+
+  .auth-footer-mark{
+    grid-column:1 / -1;
+    grid-row:6;
+    width:100%;
+    margin:18px 0 0;
+  }
+
+  .auth-card .auth-logo + .auth-welcome{}
+}
+
+/* Monitores menores: reduz somente a composição desktop para evitar rolagem. */
+@media(min-width:701px) and (max-height:820px){
+  .auth-screen{padding:18px 4vw}
+  .auth-card{
+    min-height:560px;
+    max-height:calc(100vh - 36px);
+    padding:24px 44px;
+    column-gap:48px;
+  }
+  .auth-logo{width:230px;height:230px;margin-bottom:12px}
+  .auth-welcome{font-size:21px}
+  .auth-welcome strong{font-size:43px}
+  .auth-tagline{font-size:15px;margin-top:7px}
+  .auth-tab{min-height:52px}
+  .auth-card .auth-input-wrap input{min-height:58px}
+  .auth-submit{min-height:58px}
+}
+
+/* Não altera o layout vertical já definido para tablets e celulares. */
+@media(max-width:700px){
+  .auth-card{display:block;min-height:0;border:0;background:rgba(3,6,5,.22);box-shadow:none;backdrop-filter:none;text-align:center}
+}

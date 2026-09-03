@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#b7f500"><meta name="description" content="CicloFit 5.0 — treino, ciclismo, recuperação e evolução.">
+<link rel="manifest" href="manifest.json"><title>CicloFit 5.0</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="authScreen" class="auth-screen">
+  <div class="auth-bg-glow auth-bg-glow-one"></div>
+  <div class="auth-bg-glow auth-bg-glow-two"></div>
+  <div class="auth-bg-lines" aria-hidden="true"></div>
+
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-halo"></div>
+      <img src="assets/ciclofit-logo.png" alt="CicloFit">
+    </div>
+
+    <div class="auth-welcome">Bem-vindo ao <strong>CICLO-FIT</strong></div>
+    <p class="auth-tagline">Treine. Evolua. Supere-se.</p>
+
+    <div class="auth-tabs" role="tablist" aria-label="Tipo de acesso">
+      <button class="auth-tab active" data-role="student" type="button">
+        <span class="auth-tab-icon" aria-hidden="true">♙</span>
+        <span>ALUNO</span>
+      </button>
+      <button class="auth-tab" data-role="admin" type="button">
+        <span class="auth-tab-icon" aria-hidden="true">⬡</span>
+        <span>ADMIN</span>
+      </button>
+    </div>
+
+    <div class="auth-form">
+      <label class="auth-field auth-field-user">
+        <span class="auth-field-label">Usuário</span>
+        <span class="auth-input-wrap">
+          <span class="auth-input-icon" aria-hidden="true">✉</span>
+          <input id="loginUser" autocomplete="username" placeholder="E-mail ou CPF">
+        </span>
+      </label>
+
+      <label class="auth-field auth-field-pass">
+        <span class="auth-field-label">Senha</span>
+        <span class="auth-input-wrap">
+          <span class="auth-input-icon" aria-hidden="true">▣</span>
+          <input id="loginPass" type="password" autocomplete="current-password" placeholder="Senha">
+        </span>
+      </label>
+
+      <button class="btn btn-primary full auth-submit" id="loginBtn" type="button">ENTRAR</button>
+    </div>
+
+    <div id="loginHint" class="auth-hint">O acesso do aluno é criado pelo administrador.</div>
+    <div id="loginError" class="auth-error" hidden></div>
+
+    <div class="auth-footer-mark">
+      <span></span><i></i><span></span>
+    </div>
+  </div>
+</div>
+
+<section id="adminPanel" class="admin-panel page">
+  <div class="admin-topbar"><div class="admin-brand"><img src="assets/ciclofit-logo.png" alt="CicloFit"></div><div class="admin-topbar-actions"><button class="icon-btn admin-theme-btn" id="adminThemeToggle" type="button" aria-label="Alternar tema" title="Alternar tema">☀</button><button class="btn btn-light" id="logoutBtn" type="button">⇥ Sair</button></div></div>
+  
+  <div class="admin-tabs" role="tablist" aria-label="Seções do painel administrativo">
+    <button class="admin-tab active" data-admin-tab="students" type="button">ALUNOS</button>
+    <button class="admin-tab" data-admin-tab="workouts" type="button">TREINOS</button>
+    <button class="admin-tab" data-admin-tab="custom" type="button">CRIAR TREINO</button>
+    <button class="admin-tab" data-admin-tab="notifications" type="button">NOTIFICAÇÕES</button>
+  </div>
+  <div class="admin-actions"><button class="btn btn-light" id="adminNotifyBtn">🔔 Ativar notificações</button></div>
+  <div class="admin-tab-panel active" data-admin-panel="students">
+  <div class="card"><div class="card-head"><div><span class="eyebrow">ALUNOS</span><h3>Contas dos alunos</h3></div><span id="studentCount">0</span></div>
+    <div class="form-grid"><label>Nome<input id="newStudentName" placeholder="Nome do aluno"></label><label>Usuário<input id="newStudentUser" placeholder="usuario"></label><label>Senha<input id="newStudentPass" type="text" placeholder="Senha inicial"></label></div>
+    <button class="btn btn-primary" id="createStudentBtn">+ Criar acesso</button>
+    <div id="studentList" class="admin-list"></div>
+  </div>
+  </div>
+  <div class="admin-tab-panel" data-admin-panel="workouts">
+  <div class="card admin-workouts-panel">
+    <div class="admin-workouts-head">
+      <div><span class="eyebrow">GESTÃO DE TREINOS</span><h3>Treinos atribuídos</h3><p class="muted">Visualize, filtre e gerencie os treinos dos alunos em um só lugar.</p></div>
+      <button class="btn btn-primary" id="goCustomWorkoutBtn" type="button">+ Novo treino</button>
+    </div>
+    <div class="admin-workout-stats">
+      <div><strong id="adminWorkoutCount">0</strong><small>Total</small></div>
+      <div><strong id="adminWorkoutActive">0</strong><small>Ativos</small></div>
+      <div><strong id="adminWorkoutExpired">0</strong><small>Vencidos</small></div>
+    </div>
+    <div class="admin-workout-tools">
+      <input id="adminWorkoutSearch" class="exercise-search" placeholder="🔎 Buscar aluno ou treino..." aria-label="Buscar treino">
+      <select id="adminWorkoutStudentFilter" aria-label="Filtrar por aluno"><option value="">Todos os alunos</option></select>
+      <select id="adminWorkoutStatusFilter" aria-label="Filtrar por status"><option value="all">Todos os status</option><option value="active">Ativos</option><option value="expired">Vencidos</option></select>
+    </div>
+    <div id="adminWorkoutList" class="admin-list"></div>
+  </div>
+  </div>
+  <div class="admin-tab-panel" data-admin-panel="custom">
+  <div class="card custom-workout-builder">
+    <div class="card-head"><div><span class="eyebrow">CRIAR TREINO</span><h3>Montar novo treino</h3><p class="muted custom-builder-intro">Monte a sessão, organize os exercícios e atribua ao aluno.</p></div></div>
+    <div class="form-grid"><label>Nome do treino<input id="customWorkoutName" placeholder="Ex.: Força + endurance"></label><label>Grupo de treino<input id="customWorkoutGroup" placeholder="Ex.: Base 1, Emagrecimento, Performance"></label><label>Modalidade<select id="customWorkoutCategory"><option value="gym">🏋️ Academia</option><option value="bike">🚴 Bike</option></select></label><label>Duração<input id="customWorkoutDuration" placeholder="Ex.: 60 min"></label><label>Intensidade<select id="customWorkoutIntensity"><option>Leve</option><option selected>Moderada</option><option>Alta</option></select></label></div>
+    <div class="exercise-picker"><div class="picker-head"><div><span class="picker-kicker">CATÁLOGO DE EXERCÍCIOS</span><strong>Adicionar exercícios</strong><small>Pesquise e organize por grupo muscular ou modalidade.</small></div><button class="btn btn-light mini-add-exercise" id="addExerciseBtn" type="button">+ Novo exercício</button></div><div class="exercise-catalog-tools"><label class="catalog-filter-field">Buscar<input id="exerciseSearch" class="exercise-search" placeholder="Ex.: agachamento"></label><label class="catalog-filter-field">Grupo muscular<select id="exerciseCatalogGroup"><option value="all">Todos os grupos</option></select></label><label class="catalog-filter-field">Modalidade<select id="exerciseCatalogCategory"><option value="all">Todas</option><option value="gym">Academia</option><option value="bike">Bike</option></select></label></div><div id="exerciseCatalog" class="exercise-catalog"></div></div>
+    <div class="selected-exercises"><div class="picker-head"><strong>Exercícios do treino</strong><small>Defina séries/repetições ou tempo</small></div><div id="selectedExercises" class="selected-exercise-list"><div class="muted">Nenhum exercício adicionado.</div></div></div>
+    <div class="form-grid"><label>Aluno (opcional)<select id="customWorkoutStudent"><option value="" selected>Não atribuir agora</option></select></label><label>Dia da semana<select id="customWorkoutWeekday"><option value="" selected>Selecione o dia</option><option value="0">Domingo</option><option value="1">Segunda-feira</option><option value="2">Terça-feira</option><option value="3">Quarta-feira</option><option value="4">Quinta-feira</option><option value="5">Sexta-feira</option><option value="6">Sábado</option></select></label><label>Validade<input id="customWorkoutValidity" type="number" min="1" value="30"><small>dias</small></label><label>Data de início<input id="customWorkoutStart" type="date"></label><label>Observação<input id="customWorkoutNote" placeholder="Orientação para o aluno"></label></div>
+    <button class="btn btn-primary" id="saveCustomWorkout">+ Criar e atribuir treino personalizado</button>
+    <button class="btn btn-light" id="cancelCustomWorkoutEdit" type="button" hidden>Cancelar edição</button><div id="customWorkoutFeedback" class="muted" style="margin-top:8px">Defina o treino, adicione exercícios e salve como grupo. Você poderá atribuí-lo a alunos agora ou depois.</div>
+    <div id="customWorkoutList" class="admin-list"></div>
+  </div>
+  </div>
+  <div class="admin-tab-panel" data-admin-panel="notifications">
+  <div class="card"><div class="card-head"><div><span class="eyebrow">NOTIFICAÇÕES</span><h3>Avisos de validade</h3></div><span id="adminNotificationCount">0</span></div><div id="adminNotifications" class="admin-list"></div></div>
+  </div>
+</section>
+
+<header class="app-header"><div class="container header-top"><div class="app-brand-logo"><img src="assets/ciclofit-logo.png" alt="CicloFit"></div><div class="header-actions"><button class="icon-btn" id="themeToggle" aria-label="Alternar tema">☾</button><button class="icon-btn logout-header" id="headerLogout" aria-label="Sair">⇥</button></div></div></header>
+<main class="container app-main">
+<section id="home" class="page active">
+  <div class="welcome"><div><span class="eyebrow" id="todayDate"></span><h1 id="welcomeTitle">Seu dia começa aqui.</h1><p id="welcomeSub">Acompanhe o próximo passo e mantenha a consistência.</p></div></div>
+  <article class="hero-card">
+    <div class="today-badge hero-today-badge" id="todayBadge">HOJE</div><div class="hero-icon" id="todayIcon">🚴</div><div class="hero-copy"><span class="eyebrow" id="todayLabel">FOCO DE HOJE</span><h2 id="todayWorkout"></h2><p id="todayDescription"></p></div><div class="hero-stats"><div><strong id="todayDuration">—</strong><span>duração</span></div><div><strong id="todayExercises">—</strong><span>exercícios</span></div><div><strong id="todayIntensity">—</strong><span>intensidade</span></div></div><button class="btn btn-primary full" id="todayAction">COMEÇAR</button></article>
+  <div class="section-head"><div><span class="eyebrow">SEMANA</span><h2>Calendário da semana</h2></div><span class="muted" id="weekCurrent">Segunda a domingo</span></div>
+  <div class="card week-card">
+    <div id="weekGrid" class="day-grid"></div>
+  </div>
+  <div class="section-head"><div><span class="eyebrow">RESUMO</span><h2>Seu progresso</h2></div><button class="text-btn" data-go="progress">Ver evolução</button></div>
+  <div class="grid-4"><div class="mini-card"><span class="mini-icon orange">🏋️</span><strong id="weekGym">0</strong><small>treinos</small></div><div class="mini-card"><span class="mini-icon blue">🚴</span><strong id="weekRides">0</strong><small>pedais</small></div><div class="mini-card"><span class="mini-icon green">⏱</span><strong id="weekMinutes">0</strong><small>minutos</small></div><div class="mini-card"><span class="mini-icon purple">🔥</span><strong id="streak">0</strong><small>dias ativos</small></div></div>
+  
+  <div class="section-head"><div><span class="eyebrow">OBJETIVOS</span><h2>Metas de <span id="goalMonthLabel">mês</span></h2></div><button class="text-btn" onclick="openGoalEditor()">Editar</button></div>
+  <div class="card goals-card"><div class="goal-row"><div><strong>🚴 Distância</strong><small id="goalKmText">0 / 500 km</small></div><b id="goalKmPct">0%</b></div><div class="progress"><i id="goalKmFill"></i></div><div class="goal-row"><div><strong>🏋️ Treinos</strong><small id="goalWorkoutText">0 / 12</small></div><b id="goalWorkoutPct">0%</b></div><div class="progress"><i id="goalWorkoutFill"></i></div></div>
+</section>
+<section id="workouts" class="page">
+  <div class="page-intro"><span class="eyebrow">ACADEMIA</span><h1>Treinos</h1><p>Escolha o treino, faça suas séries e acompanhe seu progresso.</p></div>
+  <div class="workout-section-label"><span>SEUS TREINOS</span></div>
+  <div class="card in-progress-wrap"><div class="card-head"><div><span class="eyebrow">ACOMPANHAMENTO</span><h3>Exercícios em andamento</h3></div></div><div id="inProgressExercises"></div></div>
+  <div id="workoutCards" class="workout-list"></div>
+</section>
+<section id="cycling" class="page">
+  <div class="page-intro"><span class="eyebrow">CICLISMO</span><h1>Pedal</h1><p>Importe seus pedais por GPX, registre manualmente e consulte o histórico.</p></div>
+
+  <div class="card ride-form-card">
+    <div class="card-head">
+      <div><span class="eyebrow">REGISTRAR PEDAL</span><h3>Novo pedal</h3></div>
+      <span id="gpxStatus" class="gpx-data-note">Pronto para registrar</span>
+    </div>
+
+    <div class="ride-mode-tabs" role="tablist" aria-label="Tipo de registro">
+      <button id="gpxModeBtn" class="ride-mode-btn active" type="button">📥 Carregar GPX</button>
+      <button id="manualModeBtn" class="ride-mode-btn" type="button">✍️ Manual</button>
+    </div>
+
+    <label>Data da atividade<input id="rideDate" type="date"></label>
+
+    <div id="gpxRideFields">
+      <div class="ride-gpx-action">
+        <div><strong>📁 Arquivo GPX</strong><small>Selecione um arquivo GPX para importar os dados do pedal.</small></div>
+        <button class="btn btn-primary" id="importGpx" type="button">Selecionar GPX</button>
+      </div>
+      <div class="gpx-hint" id="gpxHint">Nenhum GPX carregado.</div>
+    </div>
+
+    <div id="manualRideFields" class="manual-ride-fields" hidden>
+      <div class="form-grid">
+        <label>Distância (km)<input id="manualDistance" type="number" min="0.1" step="0.1" placeholder="Ex.: 35,5"></label>
+        <label>Velocidade média (km/h)<input id="manualSpeed" type="number" min="0.1" step="0.1" placeholder="Ex.: 24,0"></label>
+        <label>Altimetria (m)<input id="manualElevation" type="number" min="0" step="1" placeholder="Ex.: 420"></label>
+        <label>Tempo (minutos)<input id="manualMinutes" type="number" min="1" step="1" placeholder="Ex.: 90"></label>
+      </div>
+      <div class="gpx-hint">Informe os dados conhecidos do pedal.</div>
+    </div>
+
+    <button class="btn btn-primary full" id="saveRide">Salvar atividade GPX</button>
+    <input id="gpxFile" type="file" accept=".gpx,application/gpx+xml" hidden>
+  </div>
+
+  <div class="section-head"><div><span class="eyebrow">HISTÓRICO DE PEDAL</span><h2>Histórico</h2></div></div>
+  <div id="rideHistory"></div>
+</section>
+<section id="progress" class="page"><div class="page-intro"><span class="eyebrow">PERFORMANCE</span><h1>Evolução</h1><p>Veja volume, consistência e recordes em um só lugar.</p></div><div class="progress-hero"><div><span class="eyebrow">ATIVIDADE TOTAL</span><strong id="progressHeadline">0</strong><span>sessões registradas</span></div><div class="ring" id="progressRing"><span id="progressRingText">0%</span></div></div><div class="grid-3"><div class="metric-card"><small>Treinos</small><strong id="totalCompleted">0</strong></div><div class="metric-card"><small>Pedais</small><strong id="ridesCompleted">0</strong></div><div class="metric-card"><small>Km totais</small><strong id="totalKm">0</strong></div><div class="metric-card"><small>Tempo pedal</small><strong id="totalRideTime">0h</strong></div><div class="metric-card"><small>Elevação</small><strong id="totalElevation">0m</strong></div><div class="metric-card"><small>Volume academia</small><strong id="totalVolume">0 kg</strong></div></div><div class="card chart-card"><div class="card-head"><div><span class="eyebrow">ACADEMIA</span><h3>Volume</h3></div><span id="volumeTotal">0 kg</span></div><canvas id="volumeChart" height="190"></canvas></div><div class="card chart-card"><div class="card-head"><div><span class="eyebrow">CICLISMO</span><h3>Distância recente</h3></div><span>km</span></div><canvas id="rideChart" height="190"></canvas></div><div class="card"><div class="card-head"><div><span class="eyebrow">DESEMPENHO</span><h3>Recordes pessoais</h3></div><span id="prCount">0</span></div><div id="prList"></div></div><div class="card"><div class="card-head"><h3>Últimos treinos</h3><span>histórico</span></div><div id="history"></div></div><div class="button-row"><button class="btn btn-light" id="exportData">⬇️ Exportar dados</button><button class="btn btn-light" id="importData">⬆️ Importar backup</button></div><input id="backupFile" type="file" accept="application/json" hidden><button class="btn btn-danger full progress-danger" id="clearData">Apagar meu progresso</button></section>
+<section id="profile" class="page"><div class="page-intro"><span class="eyebrow">CONTA</span><h1>Perfil</h1><p>Personalize seus dados e acompanhe sua evolução.</p></div><div class="card profile-card"><div class="avatar" id="avatar">CF</div><div class="profile-head-copy"><h2 id="profileDisplayName">Seu perfil</h2><p class="muted" id="profileDisplayGoal">Configure seus dados para personalizar o CicloFit.</p><label class="photo-upload"><input id="profilePhotoInput" type="file" accept="image/*" hidden><button class="btn btn-light" type="button" onclick="document.getElementById('profilePhotoInput').click()">📷 Carregar foto</button></label></div></div><div class="card"><div class="section-label">Dados pessoais</div><div class="form-grid"><label>Nome<input id="profileName" placeholder="Seu nome"></label><label>Data de nascimento<input id="profileBirthDate" type="date"></label><label>Idade<input id="profileAge" type="number" min="1" readonly></label><label>Telefone<input id="profilePhone" type="tel" placeholder="(71) 99999-9999"></label><label>Peso (kg)<input id="profileWeight" type="number" step="0.1"></label><label>Altura (cm)<input id="profileHeight" type="number"></label><label>Objetivo<select id="profileGoal"><option>Melhorar condicionamento</option><option>Aumentar resistência</option><option>Ganhar força</option><option>Preparar para prova</option><option>Perder peso</option></select></label><label>Nível<select id="profileLevel"><option>Iniciante</option><option>Intermediário</option><option>Avançado</option></select></label><label>FC máxima<input id="profileMaxHr" type="number" placeholder="190"></label><label>FTP (W)<input id="profileFtp" type="number" placeholder="250"></label></div><button class="btn btn-primary full" id="saveProfile">Salvar perfil</button></div><div class="card"><div class="section-label">❤️ Zonas de frequência cardíaca</div><div id="zones"></div></div><div class="card settings-list"><div class="section-label">Configurações</div><button id="installApp" class="btn btn-light full">📱 Instalar CicloFit</button><button id="notifyBtn" class="btn btn-light full">🔔 Ativar lembretes</button></div></section>
+</main>
+<nav class="bottom-nav" aria-label="Navegação principal"><button class="nav-btn active" data-page="home">⌂<span>Início</span></button><button class="nav-btn" data-page="workouts">▦<span>Treinos</span></button><button class="nav-btn" data-page="cycling">◉<span>Pedal</span></button><button class="nav-btn" data-page="progress">↗<span>Evolução</span></button><button class="nav-btn" data-page="profile">○<span>Perfil</span></button></nav>
+<div class="modal" id="newExerciseModal" role="dialog" aria-modal="true" aria-labelledby="newExerciseTitle"><div class="modal-content small-modal"><button class="close" id="closeNewExercise" aria-label="Fechar">×</button><div class="eyebrow">CATÁLOGO</div><h2 id="newExerciseTitle">Novo exercício</h2><p class="muted">Cadastre um exercício para reutilizá-lo nos próximos treinos personalizados.</p><div class="form-grid"><label>Nome do exercício<input id="newExerciseName" placeholder="Ex.: Agachamento búlgaro"></label><label>Grupo muscular / objetivo<input id="newExerciseGroup" placeholder="Ex.: Pernas"></label><label>Modalidade<select id="newExerciseCategory"><option value="gym">🏋️ Academia</option><option value="bike">🚴 Bike</option></select></label></div><div class="button-row" style="margin-top:12px"><button class="btn btn-light" id="cancelNewExercise" type="button">Cancelar</button><button class="btn btn-primary" id="saveNewExercise" type="button">+ Adicionar exercício</button></div></div></div>
+<div class="modal gym-workout-overlay" id="workoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-content gym-workout-sheet"><div class="gym-sheet-handle"></div><div class="gym-sheet-head"><div><h2 id="modalTitle"></h2><p class="muted" id="modalSubtitle"></p></div><button class="close gym-close" id="closeModal" aria-label="Fechar treino">×</button></div><div class="gym-live-bar"><b id="gymSessionStatus">SÉRIE EM ANDAMENTO</b><small>registre carga e repetições</small></div><div id="exerciseList"></div><div class="timer"><div><small>DESCANSO</small><strong id="timer">60</strong><span>s</span></div><div class="timer-progress"><i id="timerProgress"></i></div><div class="timer-actions"><button class="btn btn-light" id="minusTimer">−15s</button><button class="btn btn-light" id="startTimer">Iniciar</button><button class="btn btn-light" id="plusTimer">+15s</button><button class="btn btn-light" id="resetTimer">Reset</button></div></div><button class="btn btn-primary full" id="finishWorkout">✓ Concluir treino</button></div></div>
+<div class="modal" id="goalModal"><div class="modal-content small-modal"><button class="close" onclick="closeGoalEditor()" aria-label="Fechar">×</button><div class="eyebrow">METAS MENSAIS</div><h2>Personalize sua evolução</h2><div class="form-grid"><label>Distância (km)<input id="goalKmInput" type="number" min="1"></label><label>Treinos<input id="goalWorkoutInput" type="number" min="1"></label><label>Horas de pedal<input id="goalHoursInput" type="number" min="1"></label><label>Elevação (m)<input id="goalElevationInput" type="number" min="1"></label></div><button class="btn btn-primary full" onclick="saveGoals()">Salvar metas</button></div></div>
+<div class="modal" id="quickModal"><div class="modal-content small-modal"><button class="close" onclick="closeQuick()" aria-label="Fechar">×</button><div class="eyebrow">REGISTRO RÁPIDO</div><h2>O que deseja fazer?</h2><div class="quick-grid"><button onclick="closeQuick();navigate('cycling')"><span>🚴</span><b>Registrar pedal</b><small>Distância e tempo</small></button><button onclick="closeQuick();navigate('workouts')"><span>🏋️</span><b>Começar treino</b><small>Séries e cargas</small></button><button onclick="closeQuick();navigate('progress')"><span>📊</span><b>Ver evolução</b><small>Resultados e metas</small></button></div></div></div>
+
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div><script src="js/app.js"></script>
+</body></html>

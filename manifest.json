@@ -1,0 +1,19 @@
+{
+  "id":"./",
+  "name":"CicloFit 5.0",
+  "short_name":"CicloFit",
+  "description":"Treino, ciclismo, recuperação e evolução.",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"portrait-primary",
+  "background_color":"#0b1005",
+  "theme_color":"#b7f500",
+  "lang":"pt-BR",
+  "categories":["fitness","sports","health"],
+  "shortcuts":[
+    {"name":"Começar treino","short_name":"Treino","url":"./#workouts"},
+    {"name":"Registrar pedal","short_name":"Pedal","url":"./#cycling"},
+    {"name":"Ver evolução","short_name":"Evolução","url":"./#progress"}
+  ]
+}
