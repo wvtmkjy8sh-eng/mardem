@@ -1,0 +1,23 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Configurações locais / segredos
+js/cloud-config.js
+.env
+.env.*
+!.env.example
+
+# Builds / logs
+node_modules/
+dist/
+build/
+*.log
+
+# Arquivos temporários
+*.bak
+*.tmp
