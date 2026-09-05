@@ -189,5 +189,9 @@
 <div class="modal" id="quickModal"><div class="modal-content small-modal"><button class="close" onclick="closeQuick()" aria-label="Fechar">×</button><div class="eyebrow">REGISTRO RÁPIDO</div><h2>O que deseja fazer?</h2><div class="quick-grid"><button onclick="closeQuick();navigate('cycling')"><span>🚴</span><b>Registrar pedal</b><small>Distância e tempo</small></button><button onclick="closeQuick();navigate('workouts')"><span>🏋️</span><b>Começar treino</b><small>Séries e cargas</small></button><button onclick="closeQuick();navigate('progress')"><span>📊</span><b>Ver evolução</b><small>Resultados e metas</small></button></div></div></div>
 
 
-<div id="toast" class="toast" role="status" aria-live="polite"></div><script src="js/app.js"></script>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/cloud-config.js"></script>
+<script src="js/cloud-sync.js"></script>
+<script src="js/app.js"></script>
 </body></html>

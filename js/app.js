@@ -1205,5 +1205,13 @@ cleanLegacyABCWorkouts();
 // Inicializa o acesso somente após carregar o construtor de treinos personalizados.
 initAuth();
 
+// v5.0 online: verifica opcional da infraestrutura Supabase sem alterar o fluxo local.
+if(window.CicloFitCloud?.enabled){
+  window.CicloFitCloud.ping().then(r=>{
+    if(r.ok) console.info('CicloFit Cloud: conexão Supabase OK.');
+    else console.warn('CicloFit Cloud: banco não respondeu.', r.error||r.reason);
+  }).catch(e=>console.warn('CicloFit Cloud: erro de conexão.',e));
+}
+
 // v40: mantém o botão de conclusão coerente com o treino do dia.
 try{updateFinishWorkoutState()}catch(e){}
