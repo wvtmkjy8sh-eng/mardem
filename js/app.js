@@ -776,7 +776,10 @@ function checkWorkoutValidity(){
   if(changed)saveAdminWorkouts(list);
 }
 function requestAdminNotifications(){if('Notification' in window)Notification.requestPermission().then(()=>{toast('🔔 Notificações ativadas');checkWorkoutValidity()})}
-function logout(){clearAuth();location.reload()}
+async function logout(){
+  try{if(window.CicloFitCloud?.enabled && window.CicloFitCloud.signOut)await window.CicloFitCloud.signOut()}catch(e){console.warn('CicloFit Cloud: falha ao sair',e)}
+  clearAuth();location.reload()
+}
 function renderStudentAssigned(){
   const a=currentAuth(); if(!a||a.role!=='student')return;
   const assigned=adminWorkouts().filter(w=>String(w.studentId)===String(a.id)).sort((x,y)=>String(y.startDate).localeCompare(String(x.startDate)));
@@ -856,11 +859,74 @@ function renderAdminNotifications(){const n=adminNotifs();$('#adminNotificationC
 function markAdminNotification(id){const n=adminNotifs();const x=n.find(a=>String(a.id)===String(id));if(x)x.read=true;saveAdminNotifs(n);renderAdminNotifications()}
 function showAdmin(){document.body.classList.add('admin-mode');document.querySelector('main')?.style.setProperty('display','none');document.querySelector('.app-header')?.style.setProperty('display','none');document.querySelector('.bottom-nav')?.style.setProperty('display','none');$('#quickAdd')?.style.setProperty('display','none');$('#adminPanel').classList.add('active');$('#authScreen').style.display='none';renderAdminStudents();renderAdminWorkouts();renderCustomWorkoutList();renderAdminNotifications();checkWorkoutValidity();setAdminTab('students')}
 function showStudent(){document.body.classList.remove('admin-mode');document.querySelector('.app-header')?.style.removeProperty('display');document.querySelector('main')?.style.removeProperty('display');document.querySelector('.bottom-nav')?.style.removeProperty('display');$('#quickAdd')?.style.removeProperty('display');$('#adminPanel').classList.remove('active');$('#authScreen').style.display='none';renderStudentAssigned();refresh()}
-function initAuth(){
+async function initAuth(){
+  const cloud = window.CicloFitCloud;
+  // Quando o Supabase está ativo, a sessão real tem prioridade sobre o localStorage.
+  if(cloud?.enabled && cloud.getSession){
+    try{
+      const sessionResult = await cloud.getSession();
+      const session = sessionResult?.session;
+      if(session?.user){
+        const profileResult = await cloud.getProfile(session.user.id);
+        const profile = profileResult?.data;
+        if(profile && profile.active !== false){
+          const role = profile.role === 'admin' ? 'admin' : 'student';
+          setAuth({id:profile.id,role,username:profile.username||session.user.email,name:profile.name||session.user.email||'Usuário',email:session.user.email});
+          if(role==='admin')showAdmin();else showStudent();
+          return;
+        }
+        await cloud.signOut();
+      }
+    }catch(e){console.warn('CicloFit Cloud: erro ao restaurar sessão',e)}
+  }
+
   let a=currentAuth(); if(a){if(a.role==='admin')showAdmin();else showStudent();return}
   $('#authScreen').style.display='flex';
-  $$('.auth-tab').forEach(b=>b.onclick=()=>{$$('.auth-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#loginHint').textContent=b.dataset.role==='admin'?'Acesso administrativo.':'O acesso do aluno é criado pelo administrador.'});
-  $('#loginBtn').onclick=()=>{const role=$('.auth-tab.active')?.dataset.role||'student',u=String($('#loginUser').value||'').trim().toLowerCase(),p=String($('#loginPass').value||'');let ok=null;if(!u||!p){$('#loginError').hidden=false;$('#loginError').textContent='Informe usuário e senha.';return}if(role==='admin'&&u===defaultAdmin.username.toLowerCase()&&p===defaultAdmin.password)ok={id:'admin',role:'admin',username:defaultAdmin.username,name:'Administrador'};else if(role==='student')ok=authUsers().find(x=>x.role==='student'&&String(x.username||'').trim().toLowerCase()===u&&String(x.password??'')===p&&x.active!==false);if(!ok){$('#loginError').hidden=false;$('#loginError').textContent='Usuário ou senha inválidos. Verifique se o acesso foi criado pelo Admin.';return}$('#loginError').hidden=true;setAuth({id:ok.id,role:ok.role,username:ok.username,name:ok.name||'Aluno'});location.reload()};
+  $$('.auth-tab').forEach(b=>b.onclick=()=>{
+    $$('.auth-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    $('#loginHint').textContent=b.dataset.role==='admin'?'Acesso administrativo.':'Acesso do aluno criado pelo administrador.';
+    $('#loginUser').placeholder=cloud?.enabled?'E-mail':'E-mail ou CPF';
+  });
+
+  $('#loginBtn').onclick=async()=>{
+    const role=$('.auth-tab.active')?.dataset.role||'student';
+    const u=String($('#loginUser').value||'').trim();
+    const p=String($('#loginPass').value||'');
+    if(!u||!p){$('#loginError').hidden=false;$('#loginError').textContent='Informe usuário/e-mail e senha.';return}
+    const btn=$('#loginBtn'); if(btn){btn.disabled=true;btn.textContent='ENTRANDO...'}
+    try{
+      if(cloud?.enabled){
+        // Supabase Auth usa e-mail + senha nesta primeira fase online.
+        const result=await cloud.signIn(u,p);
+        if(result.error)throw result.error;
+        const user=result.data?.user;
+        if(!user)throw new Error('Usuário autenticado não retornado.');
+        const profileResult=await cloud.getProfile(user.id);
+        if(profileResult.error)throw profileResult.error;
+        const profile=profileResult.data;
+        if(!profile){await cloud.signOut();throw new Error('Perfil do usuário não encontrado.');}
+        const actualRole=profile.role==='admin'?'admin':'student';
+        if(actualRole!==role){await cloud.signOut();throw new Error(role==='admin'?'Este acesso não é de administrador.':'Este acesso não é de aluno.')}
+        if(profile.active===false){await cloud.signOut();throw new Error('Este acesso está desativado pelo administrador.')}
+        $('#loginError').hidden=true;
+        setAuth({id:user.id,role:actualRole,username:profile.username||u,name:profile.name||user.email||'Usuário',email:user.email});
+        location.reload();
+        return;
+      }
+
+      let ok=null;
+      if(role==='admin'&&u.toLowerCase()===defaultAdmin.username.toLowerCase()&&p===defaultAdmin.password)ok={id:'admin',role:'admin',username:defaultAdmin.username,name:'Administrador'};
+      else if(role==='student')ok=authUsers().find(x=>x.role==='student'&&String(x.username||'').trim().toLowerCase()===u.toLowerCase()&&String(x.password??'')===p&&x.active!==false);
+      if(!ok)throw new Error('Usuário ou senha inválidos. Verifique se o acesso foi criado pelo Admin.');
+      $('#loginError').hidden=true;setAuth({id:ok.id,role:ok.role,username:ok.username,name:ok.name||'Aluno'});location.reload();
+    }catch(e){
+      console.warn('CicloFit login:',e);
+      $('#loginError').hidden=false;
+      $('#loginError').textContent=e?.message||'Não foi possível entrar. Verifique seus dados e tente novamente.';
+    }finally{
+      if(btn){btn.disabled=false;btn.textContent='ENTRAR'}
+    }
+  };
   $('#loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')$('#loginBtn').click()});
 }
 $('#logoutBtn')?.addEventListener('click',logout);$('#adminNotifyBtn')?.addEventListener('click',requestAdminNotifications);
