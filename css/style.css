@@ -538,6 +538,51 @@ input,select,textarea{font-size:15px}
 .admin-row small{font-size:11px}
 .admin-panel .form-grid small{font-size:10px}
 .notification-dot{font-size:12px}
+
+/* Ações dos grupos de treino: mesma largura e alinhamento estável. */
+#customWorkoutList .admin-row-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:stretch;flex:0 0 min(100%,260px)}
+#customWorkoutList .admin-row-actions .mini-action{width:100%;min-width:0;white-space:nowrap}
+#customWorkoutList .admin-row-actions .mini-danger{border:1px solid var(--border);background:var(--bg);color:var(--text)}
+#studentList .admin-student-row .mini-danger{border:1px solid var(--border);background:var(--bg);color:var(--text)}
+#adminWorkoutList .admin-workout-row .mini-danger{border:1px solid var(--border);background:var(--bg);color:var(--text)}
+#adminNotifications .admin-row>div:first-child{min-width:0;flex:1}
+#adminNotifications .admin-row>.mini-action{flex:0 0 auto;white-space:nowrap;min-width:max-content}
+#adminPanel [data-admin-panel="students"] .card{overflow:hidden}
+#adminPanel [data-admin-panel="students"] .card-head{align-items:center;margin-bottom:18px}
+#adminPanel [data-admin-panel="students"] .card-head h3{margin:3px 0 0;font-size:18px}
+#adminPanel [data-admin-panel="students"] .card-head>span{display:grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border:1px solid var(--border);border-radius:10px;background:var(--bg);font-size:12px;font-weight:800}
+#adminPanel [data-admin-panel="students"] .admin-student-form{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}
+#adminPanel [data-admin-panel="students"] .admin-student-form label{min-width:0}
+#adminPanel [data-admin-panel="students"] #createStudentBtn{margin-top:2px}
+#adminPanel [data-admin-panel="students"] #createStudentBtn{display:block}
+#adminPanel [data-admin-panel="students"] .admin-student-search{display:grid;gap:6px;margin:22px 0 0;font-size:11px;font-weight:700;color:var(--muted)}
+#adminPanel [data-admin-panel="students"] .admin-student-search-label{display:flex;align-items:center;gap:6px}
+#adminPanel [data-admin-panel="students"] .admin-student-search-label strong{font-size:13px;color:var(--text)}
+#adminPanel [data-admin-panel="students"] .admin-student-search-separator{color:var(--muted);font-size:13px}
+#adminPanel [data-admin-panel="students"] .admin-student-search-label>span:last-child{font-size:12px}
+#adminPanel [data-admin-panel="students"] .admin-student-search-label b{display:inline;color:inherit;font-size:inherit;font-weight:800;line-height:inherit}
+#adminPanel [data-admin-panel="students"] .admin-student-search input{margin:0;background:var(--bg)}
+#adminPanel [data-admin-panel="students"] #studentList{margin-top:18px}
+@media(max-width:640px){#customWorkoutList .admin-row{flex-direction:column;align-items:stretch}#customWorkoutList .admin-row>div:first-child{min-width:0;width:100%}#customWorkoutList .admin-row-actions{flex-basis:auto;width:100%}}
+@media(max-width:840px){#adminPanel [data-admin-panel="students"] .admin-student-form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#adminPanel [data-admin-panel="students"] .admin-student-form{grid-template-columns:1fr;gap:9px}#adminPanel [data-admin-panel="students"] #createStudentBtn{width:100%;margin-top:2px}#adminPanel [data-admin-panel="students"] .admin-student-search{margin-top:18px;font-size:10px}#adminPanel [data-admin-panel="students"] .admin-student-search-label{gap:5px;flex-wrap:wrap}#adminPanel [data-admin-panel="students"] .admin-student-search-label strong{font-size:12px}#adminPanel [data-admin-panel="students"] .admin-student-search-separator{font-size:12px}#adminPanel [data-admin-panel="students"] .admin-student-search-label>span:last-child{font-size:11px}#adminPanel [data-admin-panel="students"] .admin-student-search-label b{font-size:10px}#adminPanel [data-admin-panel="students"] .card-head h3{font-size:16px}}
+
+/* Legibilidade do painel Admin em telas grandes e pequenas. */
+#adminPanel{font-size:15px}
+#adminPanel .eyebrow{font-size:11px}
+#adminPanel .admin-tab{font-size:12px}
+#adminPanel label{font-size:13px}
+#adminPanel input,#adminPanel select,#adminPanel textarea{font-size:15px}
+#adminPanel .admin-row strong{font-size:13px}
+#adminPanel .admin-row small{font-size:12px;line-height:1.45}
+#adminPanel .admin-student-info small{font-size:12px}
+#adminPanel .mini-action{font-size:12px}
+#adminPanel .muted{font-size:12px}
+@media(max-width:620px){#adminPanel .admin-tab{font-size:10px}#adminPanel .eyebrow{font-size:10px}#adminPanel label{font-size:12px}#adminPanel .admin-row small,#adminPanel .admin-student-info small{font-size:11px}#adminPanel .mini-action{font-size:11px}}
+
+/* Botão de novo exercício proporcional ao conteúdo do cabeçalho. */
+#adminPanel .custom-workout-builder .mini-add-exercise{width:auto;max-width:100%;min-height:40px;flex:0 0 auto;padding:9px 12px;font-size:11px}
+@media(max-width:520px){#adminPanel .custom-workout-builder .mini-add-exercise{width:auto;min-height:38px;padding:8px 10px;font-size:10px}}
 .admin-workouts-head h3{font-size:19px}.admin-workouts-head p{font-size:11px}
 .admin-workout-stats small{font-size:10px}.admin-workout-title strong{font-size:13px}.admin-workout-title span{font-size:8px}.admin-workout-student{font-size:11px}.admin-workout-main small{font-size:9px}.admin-empty strong{font-size:12px}.admin-empty small{font-size:10px}
 .custom-builder-intro{font-size:12px}
@@ -708,6 +753,42 @@ input,select,textarea{font-size:15px}
   width:280px;height:280px;
   right:-120px;top:18%;
   background:rgba(144,255,0,.05);
+}
+
+/* Fotos reais de treino/ciclismo: composição discreta no desktop.
+   Opacidade de 10% para não competir com o formulário. */
+.auth-bg-photo{
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  opacity:.10;
+  filter:saturate(.82) contrast(.92) brightness(.72) blur(.45px);
+  mix-blend-mode:screen;
+}
+.auth-bg-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(2,4,3,.86),rgba(2,4,3,.22),rgba(2,4,3,.82));
+}
+.auth-bg-photo-cyclist{
+  right:-2vw;
+  top:7%;
+  width:min(48vw,760px);
+  height:86%;
+  background-image:url("https://images.pexels.com/photos/8879352/pexels-photo-8879352.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  border-radius:34% 0 0 34%;
+}
+.auth-bg-photo-woman{
+  left:-2vw;
+  bottom:3%;
+  width:min(44vw,700px);
+  height:72%;
+  background-image:url("https://images.pexels.com/photos/136410/pexels-photo-136410.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  border-radius:0 34% 34% 0;
 }
 .auth-bg-lines{
   position:absolute;
@@ -1154,5 +1235,90 @@ body[data-theme="light"] .auth-screen .auth-card input{color:#f2f4f0!important}
 
 /* Não altera o layout vertical já definido para tablets e celulares. */
 @media(max-width:700px){
+  .auth-bg-photo{display:none}
   .auth-card{display:block;min-height:0;border:0;background:rgba(3,6,5,.22);box-shadow:none;backdrop-filter:none;text-align:center}
+}
+
+/* =========================================================
+   CicloFit 5.0 — Login desktop: alinhamento vertical central
+   Mantém a estrutura/IDs existentes e não altera o mobile.
+   ========================================================= */
+@media(min-width:701px){
+  .auth-card{
+    grid-template-columns:minmax(0,1fr) minmax(420px,560px);
+    grid-template-rows:1fr auto auto 1fr;
+    column-gap:72px;
+    row-gap:0;
+    align-items:center;
+  }
+
+  /* Bloco visual esquerdo centralizado na mesma altura do acesso. */
+  .auth-logo{
+    grid-column:1;
+    grid-row:1 / span 2;
+    align-self:center;
+    margin:0 auto;
+  }
+  .auth-welcome{
+    grid-column:1;
+    grid-row:3;
+    align-self:center;
+    margin:0;
+  }
+  .auth-tagline{
+    grid-column:1;
+    grid-row:4;
+    align-self:start;
+    margin:8px 0 0;
+  }
+
+  /* Bloco de acesso: ALUNO/ADMIN + campos + senha ficam
+     visualmente centrados e com espaçamento uniforme. */
+  .auth-tabs{
+    grid-column:2;
+    grid-row:1;
+    align-self:end;
+    margin:0 0 18px;
+  }
+  .auth-form{
+    grid-column:2;
+    grid-row:2;
+    align-self:center;
+    margin:0;
+  }
+  .auth-field{margin-bottom:12px!important}
+  .auth-submit{margin-top:4px}
+
+  .auth-hint{
+    grid-column:2;
+    grid-row:3;
+    align-self:start;
+    margin:10px 0 0;
+  }
+  .auth-error{
+    grid-column:2;
+    grid-row:4;
+    align-self:start;
+    margin:8px 0 0;
+  }
+
+  .auth-footer-mark{
+    grid-column:1 / -1;
+    grid-row:4;
+    align-self:end;
+    margin:0 0 -4px;
+  }
+}
+
+/* Desktop baixo: conserva o alinhamento, apenas compacta as alturas. */
+@media(min-width:701px) and (max-height:820px){
+  .auth-card{
+    grid-template-rows:1fr auto auto 1fr;
+    row-gap:0;
+  }
+  .auth-tabs{margin-bottom:12px}
+  .auth-field{margin-bottom:9px!important}
+  .auth-card .auth-input-wrap input{min-height:56px}
+  .auth-submit{min-height:56px}
+  .auth-hint{margin-top:7px}
 }

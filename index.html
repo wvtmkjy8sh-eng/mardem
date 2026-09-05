@@ -9,6 +9,8 @@
 <div id="authScreen" class="auth-screen">
   <div class="auth-bg-glow auth-bg-glow-one"></div>
   <div class="auth-bg-glow auth-bg-glow-two"></div>
+  <div class="auth-bg-photo auth-bg-photo-cyclist" aria-hidden="true"></div>
+  <div class="auth-bg-photo auth-bg-photo-woman" aria-hidden="true"></div>
   <div class="auth-bg-lines" aria-hidden="true"></div>
 
   <div class="auth-card">
@@ -71,9 +73,10 @@
   </div>
   <div class="admin-actions"><button class="btn btn-light" id="adminNotifyBtn">🔔 Ativar notificações</button></div>
   <div class="admin-tab-panel active" data-admin-panel="students">
-  <div class="card"><div class="card-head"><div><span class="eyebrow">ALUNOS</span><h3>Contas dos alunos</h3></div><span id="studentCount">0</span></div>
-    <div class="form-grid"><label>Nome<input id="newStudentName" placeholder="Nome do aluno"></label><label>Usuário<input id="newStudentUser" placeholder="usuario"></label><label>Senha<input id="newStudentPass" type="text" placeholder="Senha inicial"></label></div>
+  <div class="card"><div class="card-head"><div><span class="eyebrow">ALUNOS</span><h3>Contas dos alunos</h3></div></div>
+    <div class="form-grid admin-student-form"><label>Nome<input id="newStudentName" placeholder="Nome do aluno"></label><label>Usuário<input id="newStudentUser" placeholder="usuario"></label><label>Senha<input id="newStudentPass" type="text" placeholder="Senha inicial"></label></div>
     <button class="btn btn-primary" id="createStudentBtn">+ Criar acesso</button>
+    <label class="admin-student-search"><span class="admin-student-search-label"><strong>Buscar aluno cadastrado</strong><span class="admin-student-search-separator">/</span><span>Alunos registrados: <b id="adminStudentSearchCount">0</b></span></span><input id="adminStudentSearch" class="exercise-search" type="search" placeholder="Nome ou usuário" aria-label="Buscar aluno cadastrado"></label>
     <div id="studentList" class="admin-list"></div>
   </div>
   </div>
